@@ -1,0 +1,4 @@
+[debug] > Exec(version, None, None)
+[debug] Evaluating tasks: version
+[info] 0.1
+[debug] > Exec(idea-shell, None, None)
