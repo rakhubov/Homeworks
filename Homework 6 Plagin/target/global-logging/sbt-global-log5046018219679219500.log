@@ -1,0 +1,13 @@
+[debug] > Exec(show test:bulkySources, None, None)
+[warn] build source files have changed
+[warn] modified files: 
+[warn]   C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\build.sbt
+[warn] Apply these changes by running `reload`.
+[warn] Automatically reload the build when source changes are detected by setting `Global / onChangedBuildSource := ReloadOnSourceChanges`.
+[warn] Disable this warning by setting `Global / onChangedBuildSource := IgnoreSourceChanges`.
+[debug] Evaluating tasks: Test / bulkySources
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Forcing garbage collection...
+[info] * 
+[success] Total time: 1 s, completed 19.02.2021 23:51:48
+[debug] > Exec(idea-shell, None, None)

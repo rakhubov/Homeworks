@@ -1,0 +1,6 @@
+[debug] > Exec(show bulkySources, None, None)
+[debug] Evaluating tasks: bulkySources
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] * 
+[success] Total time: 0 s, completed 19.02.2021 23:51:53
+[debug] > Exec(idea-shell, None, None)
