@@ -1,0 +1,7 @@
+[debug] > Exec(show bulkySources, None, None)
+[error] Not a valid project ID: bulkySources
+[error] Expected ':'
+[error] Not a valid key: bulkySources (similar: sources, checkBuildSources, scalaSource)
+[error] show bulkySources
+[error]                  ^
+[debug] > Exec(idea-shell, None, None)

@@ -1,0 +1,7 @@
+[debug] > Exec(show projectSettings, None, None)
+[error] Not a valid project ID: projectSettings
+[error] Expected ':'
+[error] Not a valid key: projectSettings (similar: moduleSettings, projectInfo, projectID)
+[error] show projectSettings
+[error]                     ^
+[debug] > Exec(idea-shell, None, None)

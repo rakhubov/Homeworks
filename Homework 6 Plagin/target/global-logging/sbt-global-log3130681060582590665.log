@@ -1,0 +1,5 @@
+[debug] > Exec(show test:bulkySources, None, None)
+[error] Not a valid key: bulkySources (similar: sources, checkBuildSources, scalaSource)
+[error] show test:bulkySources
+[error]                       ^
+[debug] > Exec(idea-shell, None, None)

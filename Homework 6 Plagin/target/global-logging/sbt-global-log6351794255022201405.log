@@ -1,0 +1,69 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\Slava_t47\AppData\Local\Temp\idea4.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\Slava_t47\AppData\Local\Temp\idea4.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.4.7 (AdoptOpenJDK Java 1.8.0_282)
+[debug]       Load.loadUnit: plugins took 171.589339ms
+[debug]       Load.loadUnit: defsScala took 1.060676ms
+[debug] [Loading] Scanning directory C:\Users\Slava_t47\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\Slava_t47\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 42.063341 ms
+[debug]           Load.resolveProject(global-plugins) took 71.789471ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\Slava_t47\.sbt\1.0\plugins, plugins: List(<none>))) took 151.976885ms
+[debug] [Loading] Done in C:\Users\Slava_t47\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 182.677569ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.461396ms
+[debug]     Load.loadUnit(file:/C:/Users/Slava_t47/.sbt/1.0/plugins/, ...) took 370.921342ms
+[debug]   Load.apply: load took 581.52051ms
+[debug]   Load.apply: resolveProjects took 9.052108ms
+[debug]   Load.apply: finalTransforms took 108.588258ms
+[debug]   Load.apply: config.delegates took 11.45815ms
+[debug]   Load.apply: Def.make(settings)... took 1354.914827ms
+[debug]   Load.apply: structureIndex took 227.712319ms
+[debug]   Load.apply: mkStreams took 3.213262ms
+[info] loading global plugins from C:\Users\Slava_t47\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 5639.677826ms
+[debug]           Load.loadUnit: plugins took 47.962874ms
+[debug]           Load.loadUnit: defsScala took 0.004908ms
+[debug] [Loading] Scanning directory C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\project
+[debug]             Load.loadUnit: mkEval took 10.550529ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 4.394864 ms
+[info] loading settings for project homework-6-plagin-build from idea4.sbt ...
+[debug]               Load.resolveProject(homework-6-plagin-build) took 15.545119ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id homework-6-plagin-build, base: C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\project, plugins: List(<none>))) took 21.278655ms
+[debug] [Loading] Done in C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\project, returning: (homework-6-plagin-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 291.551411ms
+[debug]           Load.loadUnit: cleanEvalClasses took 8.329225ms
+[debug]         Load.loadUnit(file:/C:/Users/Slava_t47/Downloads/scala-bootcamp-master/Homework%206%20Plagin/project/, ...) took 349.374059ms
+[debug]       Load.apply: load took 354.251737ms
+[debug]       Load.apply: resolveProjects took 0.215972ms
+[debug]       Load.apply: finalTransforms took 20.450463ms
+[debug]       Load.apply: config.delegates took 0.792494ms
+[debug]       Load.apply: Def.make(settings)... took 158.072756ms
+[debug]       Load.apply: structureIndex took 68.408875ms
+[debug]       Load.apply: mkStreams took 0.004016ms
+[info] loading project definition from C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 1208.291741ms
+[debug]     Load.loadUnit: defsScala took 0.004909ms
+[debug] [Loading] Scanning directory C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin
+[debug]       Load.loadUnit: mkEval took 0.441762ms
+[error] [C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\build.sbt]:33: ';' expected but ',' found.
+[debug] > Exec(loadFailed, None, None)
+[warn] Project loading failed: (r)etry, (q)uit, (l)ast, or (i)gnore? (default: r)

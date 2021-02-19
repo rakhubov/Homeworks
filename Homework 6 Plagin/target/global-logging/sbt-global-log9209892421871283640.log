@@ -1,0 +1,6 @@
+[debug] > Exec(show bulkySources, None, None)
+[debug] Evaluating tasks: Compile / bulkySources
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[info] * (107,C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\src\main\scala\Hello.scala)
+[success] Total time: 0 s, completed 20.02.2021 0:43:53
+[debug] > Exec(idea-shell, None, None)

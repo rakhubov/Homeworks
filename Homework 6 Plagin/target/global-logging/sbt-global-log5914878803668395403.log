@@ -1,0 +1,11 @@
+[debug] > Exec(show test:bulkySources, None, None)
+[warn] build source files have changed
+[warn] modified files: 
+[warn]   C:\Users\Slava_t47\Downloads\scala-bootcamp-master\Homework 6 Plagin\build.sbt
+[warn] Apply these changes by running `reload`.
+[warn] Automatically reload the build when source changes are detected by setting `Global / onChangedBuildSource := ReloadOnSourceChanges`.
+[warn] Disable this warning by setting `Global / onChangedBuildSource := IgnoreSourceChanges`.
+[error] Not a valid key: bulkySources (similar: sources, checkBuildSources, scalaSource)
+[error] show test:bulkySources
+[error]                       ^
+[debug] > Exec(idea-shell, None, None)
