@@ -1,3 +1,44 @@
+object TypeclassTask {
+
+  // Why am I not a Typeclass?
+  // TODO: Rework me so I am a typeclass
+  trait HashCode[A] {
+    def hash(hachCode : A): Int
+  }
+
+  // TODO: Implement me a summoner
+  object HashCode {
+  def apply[F](implicit instance: HashCode[F]): HashCode[F] = instance
+  }
+
+  def printHashCode[A: HashCode](x: A): Unit = {
+    println(HashCode[A].hash(x))
+  }
+
+  // TODO: Implement syntax so I can "abc".hash
+  object HashSyntax {
+
+    implicit class HashCodeSyntax[A](x: A) {
+def hash(implicit instance: HashCode[A]):Int ={
+        instance.hash(x)
+      }
+    }
+    //import HashSyntax._
+    def printHashCode[A: HashCode](x:A): Unit = {
+      println(x.hash)
+    }
+  }
+
+  // TODO: make an instance for String
+  implicit val stringtoInt: HashCode[String] =
+    _.hashCode
+
+  // TODO: write "abc".hash to check everything
+  import HashSyntax._
+  "abc".hash
+
+}
+
 object Task1 {
   final case class Money(amount: BigDecimal)
 
@@ -56,6 +97,3 @@ object Task4 {
   // remember `a method b` is `a.method(b)`
 }
 
-object AdvancedHomework {
-  // TODO: create a typeclass for flatMap method
-}

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ScalaCompilerConfiguration">
-    <profile name="sbt 1" modules="homework 7 typeclass" />
+    <profile name="sbt 1" modules="Homework 7 TypeClass,homework 7 typeclass" />
   </component>
 </project>
