@@ -65,7 +65,6 @@ object Task2 {
 
   User("1", "Oleg").show
   show(User("1", "Oleg"))
-  User("1", "Oleg").show(user => user.id)
 
 }
 
@@ -95,5 +94,11 @@ object Task4 {
   // TODO: design a typesafe equals so i can do a === b, but it won't compile if a and b are of different types
   // define the typeclass (think of a method signature)
   // remember `a method b` is `a.method(b)`
-}
 
+  implicit class EqSyntax[T](x: T) {
+    def ===(typ: T): Boolean = x == typ
+  }
+
+  3 === 5
+  // 3 === "s"
+}
