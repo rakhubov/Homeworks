@@ -1,0 +1,121 @@
+<?xml version="1.0"?>
+<!DOCTYPE coverage SYSTEM "http://cobertura.sourceforge.net/xml/coverage-04.dtd">
+<coverage 
+line-rate="1.00" lines-valid="40" lines-covered="40" branches-valid="2" branches-covered="2" branch-rate="1.00" complexity="0" version="1.0" timestamp="1616158316876">
+    <sources>
+        <source>--source</source>
+        <source>C:/Users/rakhub/Downloads/Homeworks/12 Unit Test/src/main/scala</source>
+    </sources>
+    <packages>
+        <package name="&lt;empty&gt;" line-rate="1.00" branch-rate="1.00" complexity="0">
+            <classes>
+                <class name="Calculator" filename="Calculator.scala" line-rate="1.00" branch-rate="1.00" complexity="0">
+                    <methods>
+                        <method name="&lt;empty&gt;/Calculator/multiply" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                                <line number="15" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                        <method name="&lt;empty&gt;/Calculator/divide" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="14" hits="1" branch="false"/>
+                                <line number="14" hits="1" branch="false"/>
+                                <line number="14" hits="1" branch="false"/>
+                                <line number="14" hits="1" branch="false"/>
+                                <line number="14" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                        <method name="&lt;empty&gt;/Calculator/plus" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                                <line number="12" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                        <method name="&lt;empty&gt;/Calculator/calculate" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="18" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="19" hits="1" branch="false"/>
+                                <line number="21" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="22" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="18" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="19" hits="1" branch="false"/>
+                                <line number="21" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="21" hits="1" branch="false"/>
+                                <line number="19" hits="1" branch="false"/>
+                                <line number="17" hits="1" branch="false"/>
+                                <line number="22" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="20" hits="1" branch="false"/>
+                                <line number="18" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                        <method name="&lt;empty&gt;/Calculator/minus" signature="()V" line-rate="1.00" branch-rate="1.00" complexity="0">
+                            <lines>
+                                <line number="13" hits="1" branch="false"/>
+                                <line number="13" hits="1" branch="false"/>
+                                <line number="13" hits="1" branch="false"/>
+                                <line number="13" hits="1" branch="false"/>
+                                <line number="13" hits="1" branch="false"/>
+                            </lines>
+                        </method>
+                    </methods>
+                    <lines>
+                        <line number="18" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="13" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="19" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="21" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="22" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="18" hits="1" branch="false"/>
+                        <line number="13" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="19" hits="1" branch="false"/>
+                        <line number="21" hits="1" branch="false"/>
+                        <line number="13" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="21" hits="1" branch="false"/>
+                        <line number="19" hits="1" branch="false"/>
+                        <line number="13" hits="1" branch="false"/>
+                        <line number="15" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="12" hits="1" branch="false"/>
+                        <line number="17" hits="1" branch="false"/>
+                        <line number="22" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="14" hits="1" branch="false"/>
+                        <line number="20" hits="1" branch="false"/>
+                        <line number="13" hits="1" branch="false"/>
+                        <line number="18" hits="1" branch="false"/>
+                    </lines>
+                </class>
+            </classes>
+        </package>
+    </packages>
+</coverage>

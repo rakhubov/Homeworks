@@ -1,0 +1,922 @@
+<html>
+      <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+        <title id="title">
+          Calculator.scala.html
+        </title>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/css/theme.default.min.css" type="text/css"/><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.20.1/js/jquery.tablesorter.min.js"></script><link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css" type="text/css"/><script src="https://netdna.bootstrapcdn.com/bootstrap/3.0.3/js/bootstrap.min.js"></script><script type="text/javascript">
+        $(document).ready(function() {$(".tablesorter").tablesorter();});
+      </script>
+        <style>
+          table.codegrid { font-family: monospace; font-size: 12px; width: auto!important; }table.statementlist { width: auto!important; font-size: 13px; } table.codegrid td { padding: 0!important; border: 0!important } table td.linenumber { width: 40px!important; } 
+        </style>
+      </head>
+      <body style="font-family: monospace;">
+        <ul class="nav nav-tabs">
+          <li>
+            <a href="#codegrid" data-toggle="tab">Codegrid</a>
+          </li>
+          <li>
+            <a href="#statementlist" data-toggle="tab">Statement List</a>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <div class="tab-pane active" id="codegrid">
+            <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>import Calculator._
+</span>2 <span style=''>
+</span>3 <span style=''>import scala.util.Try
+</span>4 <span style=''>
+</span>5 <span style=''>/** Simple calculator with buttons.
+</span>6 <span style=''> *
+</span>7 <span style=''> * @param memory whatever is stored in the memory.
+</span>8 <span style=''> * @param screen whatever you see on the screen.
+</span>9 <span style=''> */
+</span>10 <span style=''>case class Calculator(memory: Double = 0, screen: Double = 0, operation: Option[Operation] = None) {
+</span>11 <span style=''>
+</span>12 <span style=''>  def plus: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Plus))</span><span style=''>
+</span>13 <span style=''>  def minus: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Minus))</span><span style=''>
+</span>14 <span style=''>  def divide: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Divide))</span><span style=''>
+</span>15 <span style=''>  def multiply: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Multiply))</span><span style=''>
+</span>16 <span style=''>
+</span>17 <span style=''>  def calculate(calculator: Calculator):  Either[String, Double] = </span><span style='background: #AEF1AE'>calculator.operation</span><span style=''> match{
+</span>18 <span style=''>    case Some(Operation.Plus)   =&gt; </span><span style='background: #AEF1AE'>Right(calculator.memory + calculator.screen)</span><span style=''>
+</span>19 <span style=''>    case Some(Operation.Minus)  =&gt; </span><span style='background: #AEF1AE'>Right(calculator.memory - calculator.screen)</span><span style=''>
+</span>20 <span style=''>    case Some(Operation.Divide) =&gt; if(</span><span style='background: #AEF1AE'>calculator.screen != 0</span><span style=''>) </span><span style='background: #AEF1AE'>Right(calculator.memory / calculator.screen)</span><span style=''> else </span><span style='background: #AEF1AE'>Left(ErrorMessage.ErrorZero.message)</span><span style=''>
+</span>21 <span style=''>    case Some(Operation.Multiply)  =&gt; </span><span style='background: #AEF1AE'>Right(calculator.memory * calculator.screen)</span><span style=''>
+</span>22 <span style=''>    case _                      =&gt; </span><span style='background: #AEF1AE'>Left(ErrorMessage.CalculationError.message)</span><span style=''>
+</span>23 <span style=''>  }
+</span>24 <span style=''>
+</span>25 <span style=''>}
+</span>26 <span style=''>
+</span>27 <span style=''>object Calculator {
+</span>28 <span style=''>  sealed trait Operation
+</span>29 <span style=''>  object Operation {
+</span>30 <span style=''>    object Plus extends Operation
+</span>31 <span style=''>    object Minus extends Operation
+</span>32 <span style=''>    object Divide extends Operation
+</span>33 <span style=''>    object Multiply extends Operation
+</span>34 <span style=''>  }
+</span>35 <span style=''>}
+</span>36 <span style=''>
+</span>37 <span style=''>sealed abstract class ErrorMessage(details: String) { def message: String = s&quot;Error: $details&quot; }
+</span>38 <span style=''>object ErrorMessage {
+</span>39 <span style=''>  case object ErrorZero extends ErrorMessage(&quot;You can't divide by 0&quot;)
+</span>40 <span style=''>  case object CalculationError extends ErrorMessage(&quot;Input is not correct&quot;)
+</span>41 <span style=''>}
+</span></pre>
+          </div>
+          <div class="tab-pane" id="statementlist">
+            <table cellspacing="0" cellpadding="0" class="table statementlist">
+      <tr>
+        <th>Line</th>
+        <th>Stmt Id</th>
+        <th>Pos</th>
+        <th>Tree</th>
+        <th>Symbol</th>
+        <th>Code</th>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          2
+        </td>
+        <td>
+          347
+          -
+          367
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Some.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Some.apply[Calculator.Operation.Plus.type](Calculator.Operation.Plus)
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          5
+        </td>
+        <td>
+          325
+          -
+          368
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.copy
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy(x$2, x$3, x$1)
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          4
+        </td>
+        <td>
+          330
+          -
+          330
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$2
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$2
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          1
+        </td>
+        <td>
+          352
+          -
+          366
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.Operation.Plus
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.Operation.Plus
+        </td>
+      </tr><tr>
+        <td>
+          12
+        </td>
+        <td>
+          3
+        </td>
+        <td>
+          330
+          -
+          330
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$1
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$1
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          8
+        </td>
+        <td>
+          401
+          -
+          401
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$1
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$1
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          7
+        </td>
+        <td>
+          418
+          -
+          439
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Some.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Some.apply[Calculator.Operation.Minus.type](Calculator.Operation.Minus)
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          10
+        </td>
+        <td>
+          396
+          -
+          440
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.copy
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy(x$2, x$3, x$1)
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          9
+        </td>
+        <td>
+          401
+          -
+          401
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$2
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$2
+        </td>
+      </tr><tr>
+        <td>
+          13
+        </td>
+        <td>
+          6
+        </td>
+        <td>
+          423
+          -
+          438
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.Operation.Minus
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.Operation.Minus
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          11
+        </td>
+        <td>
+          496
+          -
+          512
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.Operation.Divide
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.Operation.Divide
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          14
+        </td>
+        <td>
+          474
+          -
+          474
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$2
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$2
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          13
+        </td>
+        <td>
+          474
+          -
+          474
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$1
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$1
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          12
+        </td>
+        <td>
+          491
+          -
+          513
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Some.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Some.apply[Calculator.Operation.Divide.type](Calculator.Operation.Divide)
+        </td>
+      </tr><tr>
+        <td>
+          14
+        </td>
+        <td>
+          15
+        </td>
+        <td>
+          469
+          -
+          514
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.copy
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy(x$2, x$3, x$1)
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          567
+          -
+          591
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Some.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Some.apply[Calculator.Operation.Multiply.type](Calculator.Operation.Multiply)
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          545
+          -
+          592
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.copy
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy(x$2, x$3, x$1)
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          16
+        </td>
+        <td>
+          572
+          -
+          590
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.Operation.Multiply
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.Operation.Multiply
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          19
+        </td>
+        <td>
+          550
+          -
+          550
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$2
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$2
+        </td>
+      </tr><tr>
+        <td>
+          15
+        </td>
+        <td>
+          18
+        </td>
+        <td>
+          550
+          -
+          550
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.copy$default$1
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy$default$1
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          21
+        </td>
+        <td>
+          663
+          -
+          683
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.operation
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.operation
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          23
+        </td>
+        <td>
+          733
+          -
+          770
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.+
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory.+(calculator.screen)
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          753
+          -
+          770
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.screen
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen
+        </td>
+      </tr><tr>
+        <td>
+          18
+        </td>
+        <td>
+          24
+        </td>
+        <td>
+          727
+          -
+          771
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Double](calculator.memory.+(calculator.screen))
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          814
+          -
+          851
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.-
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory.-(calculator.screen)
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          834
+          -
+          851
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.screen
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen
+        </td>
+      </tr><tr>
+        <td>
+          19
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          808
+          -
+          852
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Double](calculator.memory.-(calculator.screen))
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          916
+          -
+          960
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          35
+        </td>
+        <td>
+          966
+          -
+          1002
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.util.Left.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          942
+          -
+          959
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.screen
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          31
+        </td>
+        <td>
+          916
+          -
+          960
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          34
+        </td>
+        <td>
+          966
+          -
+          1002
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Left.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          28
+        </td>
+        <td>
+          892
+          -
+          914
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.!=
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen.!=(0)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          922
+          -
+          959
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double./
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory./(calculator.screen)
+        </td>
+      </tr><tr>
+        <td>
+          20
+        </td>
+        <td>
+          33
+        </td>
+        <td>
+          971
+          -
+          1001
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          ErrorMessage.message
+        </td>
+        <td style="background: #AEF1AE">
+          ErrorMessage.ErrorZero.message
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1042
+          -
+          1086
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Double](calculator.memory.*(calculator.screen))
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1048
+          -
+          1085
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory.*(calculator.screen)
+        </td>
+      </tr><tr>
+        <td>
+          21
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1068
+          -
+          1085
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.screen
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1123
+          -
+          1166
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Left.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Left.apply[String, Nothing](ErrorMessage.CalculationError.message)
+        </td>
+      </tr><tr>
+        <td>
+          22
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1128
+          -
+          1165
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          ErrorMessage.message
+        </td>
+        <td style="background: #AEF1AE">
+          ErrorMessage.CalculationError.message
+        </td>
+      </tr>
+    </table>
+          </div>
+        </div>
+      </body>
+    </html>

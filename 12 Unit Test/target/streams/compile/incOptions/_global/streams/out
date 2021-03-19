@@ -1,0 +1,17 @@
+[0m[[0m[0mdebug[0m] [0m[0mCreated transactional ClassFileManager with tempDir = C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\target\scala-2.13\classes.bak[0m
+[0m[[0m[0mdebug[0m] [0m[0mAbout to delete class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mWe backup class files:[0m
+[0m[[0m[0mdebug[0m] [0m[0mRegistering generated classes:[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$Operation$Divide$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$Operation$Minus$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$Operation.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$Operation$Multiply$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$Operation$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ErrorMessage.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ErrorMessage$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ErrorMessage$CalculationError$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	ErrorMessage$ErrorZero$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0m	Calculator$Operation$Plus$.class[0m
+[0m[[0m[0mdebug[0m] [0m[0mRemoving the temporary directory used for backing up class files: C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\target\scala-2.13\classes.bak[0m

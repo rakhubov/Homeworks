@@ -1,0 +1,159 @@
+<scoverage 
+statement-count="40" statements-invoked="40" statement-rate="100.00" branch-rate="100.00" version="1.0" timestamp="1616158317174">
+    <packages>
+        <package name="&lt;empty&gt;" statement-count="40" statements-invoked="40" statement-rate="100.00">
+            <classes>
+                <class 
+                name="Calculator" filename="Calculator.scala" statement-count="40" statements-invoked="40" statement-rate="100.00" branch-rate="100.00">
+                    <methods>
+                        <method 
+                        name="&lt;empty&gt;/Calculator/multiply" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="multiply" start="567" end="591" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="multiply" start="545" end="592" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="multiply" start="572" end="590" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="multiply" start="550" end="550" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="multiply" start="550" end="550" line="15" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/Calculator/divide" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="divide" start="496" end="512" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="divide" start="474" end="474" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="divide" start="474" end="474" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="divide" start="491" end="513" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="divide" start="469" end="514" line="14" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/Calculator/plus" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="plus" start="347" end="367" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="plus" start="325" end="368" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="plus" start="330" end="330" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="plus" start="352" end="366" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="plus" start="330" end="330" line="12" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/Calculator/calculate" statement-count="20" statements-invoked="20" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="733" end="770" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="916" end="960" line="20" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="966" end="1002" line="20" branch="true" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="814" end="851" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="1042" end="1086" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="942" end="959" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="1123" end="1166" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="916" end="960" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="753" end="770" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="966" end="1002" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="834" end="851" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="1048" end="1085" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="892" end="914" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="1068" end="1085" line="21" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="808" end="852" line="19" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="663" end="683" line="17" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="1128" end="1165" line="22" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="922" end="959" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="971" end="1001" line="20" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="calculate" start="727" end="771" line="18" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                        <method 
+                        name="&lt;empty&gt;/Calculator/minus" statement-count="5" statements-invoked="5" statement-rate="100.00" branch-rate="100.00">
+                            <statements>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="minus" start="401" end="401" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="minus" start="418" end="439" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="minus" start="396" end="440" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="minus" start="401" end="401" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                                <statement 
+                                package="&lt;empty&gt;" class="Calculator" class-type="Class" full-class-name="Calculator" source="C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala" method="minus" start="423" end="438" line="13" branch="false" invocation-count="1" ignored="false">
+</statement>
+                            </statements>
+</method>
+                    </methods>
+</class>
+            </classes>
+        </package>
+    </packages>
+</scoverage>

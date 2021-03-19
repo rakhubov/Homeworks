@@ -1,0 +1,700 @@
+# Coverage data, format version: 2.0
+# Statement data:
+# - id
+# - source path
+# - package name
+# - class name
+# - class type (Class, Object or Trait)
+# - full class name
+# - method name
+# - start offset
+# - end offset
+# - line number
+# - symbol name
+# - tree name
+# - is branch
+# - invocations count
+# - is ignored
+# - description (can be multi-line)
+# '' sign
+# ------------------------------------------
+1
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+plus
+352
+366
+12
+Calculator.Operation.Plus
+Select
+false
+0
+false
+Calculator.Operation.Plus
+
+2
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+plus
+347
+367
+12
+scala.Some.apply
+Apply
+false
+0
+false
+scala.Some.apply[Calculator.Operation.Plus.type](Calculator.Operation.Plus)
+
+3
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+plus
+330
+330
+12
+Calculator.copy$default$1
+Select
+false
+0
+false
+this.copy$default$1
+
+4
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+plus
+330
+330
+12
+Calculator.copy$default$2
+Select
+false
+0
+false
+this.copy$default$2
+
+5
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+plus
+325
+368
+12
+Calculator.copy
+Apply
+false
+0
+false
+this.copy(x$2, x$3, x$1)
+
+6
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+minus
+423
+438
+13
+Calculator.Operation.Minus
+Select
+false
+0
+false
+Calculator.Operation.Minus
+
+7
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+minus
+418
+439
+13
+scala.Some.apply
+Apply
+false
+0
+false
+scala.Some.apply[Calculator.Operation.Minus.type](Calculator.Operation.Minus)
+
+8
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+minus
+401
+401
+13
+Calculator.copy$default$1
+Select
+false
+0
+false
+this.copy$default$1
+
+9
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+minus
+401
+401
+13
+Calculator.copy$default$2
+Select
+false
+0
+false
+this.copy$default$2
+
+10
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+minus
+396
+440
+13
+Calculator.copy
+Apply
+false
+0
+false
+this.copy(x$2, x$3, x$1)
+
+11
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+divide
+496
+512
+14
+Calculator.Operation.Divide
+Select
+false
+0
+false
+Calculator.Operation.Divide
+
+12
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+divide
+491
+513
+14
+scala.Some.apply
+Apply
+false
+0
+false
+scala.Some.apply[Calculator.Operation.Divide.type](Calculator.Operation.Divide)
+
+13
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+divide
+474
+474
+14
+Calculator.copy$default$1
+Select
+false
+0
+false
+this.copy$default$1
+
+14
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+divide
+474
+474
+14
+Calculator.copy$default$2
+Select
+false
+0
+false
+this.copy$default$2
+
+15
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+divide
+469
+514
+14
+Calculator.copy
+Apply
+false
+0
+false
+this.copy(x$2, x$3, x$1)
+
+16
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+multiply
+572
+590
+15
+Calculator.Operation.Multiply
+Select
+false
+0
+false
+Calculator.Operation.Multiply
+
+17
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+multiply
+567
+591
+15
+scala.Some.apply
+Apply
+false
+0
+false
+scala.Some.apply[Calculator.Operation.Multiply.type](Calculator.Operation.Multiply)
+
+18
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+multiply
+550
+550
+15
+Calculator.copy$default$1
+Select
+false
+0
+false
+this.copy$default$1
+
+19
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+multiply
+550
+550
+15
+Calculator.copy$default$2
+Select
+false
+0
+false
+this.copy$default$2
+
+20
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+multiply
+545
+592
+15
+Calculator.copy
+Apply
+false
+0
+false
+this.copy(x$2, x$3, x$1)
+
+21
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+663
+683
+17
+Calculator.operation
+Select
+false
+0
+false
+calculator.operation
+
+22
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+753
+770
+18
+Calculator.screen
+Select
+false
+0
+false
+calculator.screen
+
+23
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+733
+770
+18
+scala.Double.+
+Apply
+false
+0
+false
+calculator.memory.+(calculator.screen)
+
+24
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+727
+771
+18
+scala.util.Right.apply
+Apply
+false
+0
+false
+scala.`package`.Right.apply[Nothing, Double](calculator.memory.+(calculator.screen))
+
+25
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+834
+851
+19
+Calculator.screen
+Select
+false
+0
+false
+calculator.screen
+
+26
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+814
+851
+19
+scala.Double.-
+Apply
+false
+0
+false
+calculator.memory.-(calculator.screen)
+
+27
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+808
+852
+19
+scala.util.Right.apply
+Apply
+false
+0
+false
+scala.`package`.Right.apply[Nothing, Double](calculator.memory.-(calculator.screen))
+
+28
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+892
+914
+20
+scala.Double.!=
+Apply
+false
+0
+false
+calculator.screen.!=(0)
+
+29
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+942
+959
+20
+Calculator.screen
+Select
+false
+0
+false
+calculator.screen
+
+30
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+922
+959
+20
+scala.Double./
+Apply
+false
+0
+false
+calculator.memory./(calculator.screen)
+
+31
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+916
+960
+20
+scala.util.Right.apply
+Apply
+false
+0
+false
+scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
+
+32
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+916
+960
+20
+scala.util.Right.apply
+Block
+true
+0
+false
+scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
+
+33
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+971
+1001
+20
+ErrorMessage.message
+Select
+false
+0
+false
+ErrorMessage.ErrorZero.message
+
+34
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+966
+1002
+20
+scala.util.Left.apply
+Apply
+false
+0
+false
+scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+
+35
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+966
+1002
+20
+scala.util.Left.apply
+Block
+true
+0
+false
+scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+
+36
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1068
+1085
+21
+Calculator.screen
+Select
+false
+0
+false
+calculator.screen
+
+37
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1048
+1085
+21
+scala.Double.*
+Apply
+false
+0
+false
+calculator.memory.*(calculator.screen)
+
+38
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1042
+1086
+21
+scala.util.Right.apply
+Apply
+false
+0
+false
+scala.`package`.Right.apply[Nothing, Double](calculator.memory.*(calculator.screen))
+
+39
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1128
+1165
+22
+ErrorMessage.message
+Select
+false
+0
+false
+ErrorMessage.CalculationError.message
+
+40
+C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1123
+1166
+22
+scala.util.Left.apply
+Apply
+false
+0
+false
+scala.`package`.Left.apply[String, Nothing](ErrorMessage.CalculationError.message)
+
