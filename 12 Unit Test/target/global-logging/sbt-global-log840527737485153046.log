@@ -1,0 +1,23 @@
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(testOnly *CalculatorSp, Some(421ad2e6-2355-4cbe-af33-5932cc48172b), Some(CommandSource(console0)))[0m
+[0m[[0m[0mdebug[0m] [0m[0mEvaluating tasks: Test / testOnly[0m
+[0m[[0m[0mdebug[0m] [0m[0mRunning task... Cancel: Signal, check cycles: false, forcegc: true[0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\target\scala-2.13\classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mNon-compiled module 'compiler-bridge_2.13' for Scala 2.13.5. Compiling...[0m
+[0m[[0m[0minfo[0m] [0m[0m  Compilation completed in 17.43s.[0m
+[0m[[0m[0minfo[0m] [0m[0mCleaning datadir [C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\target\scala-2.13/scoverage-data][0m
+[0m[[0m[0minfo[0m] [0m[0mBeginning coverage instrumentation[0m
+[0m[[0m[0minfo[0m] [0m[0mInstrumentation completed [60 statements][0m
+[0m[[0m[0minfo[0m] [0m[0mWrote instrumentation file [C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\target\scala-2.13\scoverage-data\scoverage.coverage][0m
+[0m[[0m[0minfo[0m] [0m[0mWill write measurement data to [C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\target\scala-2.13/scoverage-data][0m
+[0m[[0m[0minfo[0m] [0m[0mcompiling 1 Scala source to C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\target\scala-2.13\test-classes ...[0m
+[0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 99 milliseconds.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 0, aborted 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 0, failed 0, canceled 0, ignored 0, pending 0[0m[0m
+[0m[[0m[0minfo[0m] [0m[0m[33mNo tests were executed.[0m[0m
+[0m[[0m[0minfo[0m] [0m[0mPassed: Total 0, Failed 0, Errors 0, Passed 0[0m
+[0m[[0m[0minfo[0m] [0m[0mNo tests to run for Test / testOnly[0m
+[0m[[0m[32msuccess[0m] [0m[0mTotal time: 24 s, completed 19 мар. 2021 г., 20:28:25[0m
+[0m[[0m[0mdebug[0m] [0m[0m> Exec(shell, None, None)[0m
+[0m[[0m[0mdebug[0m] [0m[0mForcing garbage collection...[0m

@@ -1,0 +1,12 @@
+[debug] > Exec(coverage, None, None)
+[debug] > Exec(;set coverageEnabled in ThisBuild := true, None, None)
+[debug] > Exec(set coverageEnabled in ThisBuild := true, None, None)
+[info] Defining ThisBuild / coverageEnabled
+[info] The new value will be used by no settings or tasks.
+[debug] Defining 
+[debug] 	ThisBuild / coverageEnabled
+[debug] 
+[debug] The new value will be used by no settings or tasks.
+[info] Reapplying settings...
+[info] set current project to 12 Unit Test (in build file:/C:/Users/Slava_t47/Downloads/Homeworks/12%20Unit%20Test/)
+[debug] > Exec(idea-shell, None, None)

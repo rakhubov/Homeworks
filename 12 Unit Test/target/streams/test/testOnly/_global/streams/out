@@ -1,0 +1,17 @@
+[debug] Running TaskDef(CalculatorSpec, org.scalatest.tools.Framework$$anon$1@23bcb897, false, [SuiteSelector])
+[info] CalculatorSpec:
+[info] - Test calculator plus
+[info] - Test calculator minus
+[info] - Test calculator multiply
+[info] - Test calculator divide
+[info] - Test calculator command
+[debug] Summary for ScalaCheck not available.
+[info] ScalaTest
+[info] Run completed in 223 milliseconds.
+[info] Total number of tests run: 5
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 5, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[info] Passed: Total 5, Failed 0, Errors 0, Passed 5
+[debug] Passed tests:
+[debug] 	CalculatorSpec

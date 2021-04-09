@@ -1,23 +1,15 @@
-
 import Calculator._
 
 /** Simple calculator with buttons.
- *
- * @param memory whatever is stored in the memory.
- * @param screen whatever you see on the screen.
- */
+  *
+  * @param memory whatever is stored in the memory.
+  * @param screen whatever you see on the screen.
+  */
 case class Calculator(
-                       memory: Double = 0,
-                       screen: Double = 0,
-                       operation: Option[Operation] = None
-                     ) {
-
-  def enter(digit: Int): Either[String, Calculator] =
-    if (digit >= 0 && digit <= 9) {
-      Right(this.copy(memory = memory * 10 + digit))
-    } else {
-      Left("digit out of range")
-    }
+    memory: Double = 0,
+    screen: Double = 0,
+    operation: Option[Operation] = None
+) {
 
   def plus: Calculator = this.copy(operation = Some(Operation.Plus))
   def minus: Calculator = this.copy(operation = Some(Operation.Minus))
@@ -25,15 +17,37 @@ case class Calculator(
   def divide: Calculator = this.copy(operation = Some(Operation.Divide))
 
   def calculate(calculator: Calculator): Either[String, Calculator] =
-    calculator.operation match{
-      case Some(Operation.Plus) => Right(Calculator(memory = 0, screen = screen + memory))
-      case Some(Operation.Minus) => Right(Calculator(memory = 0, screen =  memory - screen))
-      case Some(Operation.Multiply) =>if(Double.MaxValue > calculator.screen * calculator.memory &&
-        Double.MinValue < calculator.screen * calculator.memory) Right(Calculator(memory = 0, screen = screen * memory))
-      else Left("vary big or small digital for Doubly")
-      case Some(Operation.Divide) => if(calculator.screen != 0) Right(Calculator(memory = 0, screen =  memory / screen))
-      else Left("Dont can divide on 0")
-      case _ => Left("This command dont exist")
+    calculator.operation match {
+      case Some(Operation.Plus) =>
+        Right(
+          Calculator(memory = 0, screen = calculator.screen + calculator.memory)
+        )
+      case Some(Operation.Minus) =>
+        Right(
+          Calculator(memory = 0, screen = calculator.memory - calculator.screen)
+        )
+      case Some(Operation.Multiply) =>
+        if (
+          Int.MaxValue > calculator.screen * calculator.memory &&
+          Int.MinValue < calculator.screen * calculator.memory
+        )
+          Right(
+            Calculator(
+              memory = 0,
+              screen = calculator.screen * calculator.memory
+            )
+          )
+        else Left("vary big or small digital")
+      case Some(Operation.Divide) =>
+        if (calculator.screen != 0)
+          Right(
+            Calculator(
+              memory = 0,
+              screen = calculator.memory / calculator.screen
+            )
+          )
+        else Left("Dont can divide on 0")
+      case _ => Left("This command not exist")
     }
 
 }

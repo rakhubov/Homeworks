@@ -24,45 +24,66 @@
           <div class="tab-pane active" id="codegrid">
             <pre style='font-size: 12pt; font-family: courier, monospace;'>1 <span style=''>import Calculator._
 </span>2 <span style=''>
-</span>3 <span style=''>import scala.util.Try
-</span>4 <span style=''>
-</span>5 <span style=''>/** Simple calculator with buttons.
-</span>6 <span style=''> *
-</span>7 <span style=''> * @param memory whatever is stored in the memory.
-</span>8 <span style=''> * @param screen whatever you see on the screen.
-</span>9 <span style=''> */
-</span>10 <span style=''>case class Calculator(memory: Double = 0, screen: Double = 0, operation: Option[Operation] = None) {
-</span>11 <span style=''>
-</span>12 <span style=''>  def plus: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Plus))</span><span style=''>
-</span>13 <span style=''>  def minus: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Minus))</span><span style=''>
-</span>14 <span style=''>  def divide: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Divide))</span><span style=''>
-</span>15 <span style=''>  def multiply: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Multiply))</span><span style=''>
-</span>16 <span style=''>
-</span>17 <span style=''>  def calculate(calculator: Calculator):  Either[String, Double] = </span><span style='background: #AEF1AE'>calculator.operation</span><span style=''> match{
-</span>18 <span style=''>    case Some(Operation.Plus)   =&gt; </span><span style='background: #AEF1AE'>Right(calculator.memory + calculator.screen)</span><span style=''>
-</span>19 <span style=''>    case Some(Operation.Minus)  =&gt; </span><span style='background: #AEF1AE'>Right(calculator.memory - calculator.screen)</span><span style=''>
-</span>20 <span style=''>    case Some(Operation.Divide) =&gt; if(</span><span style='background: #AEF1AE'>calculator.screen != 0</span><span style=''>) </span><span style='background: #AEF1AE'>Right(calculator.memory / calculator.screen)</span><span style=''> else </span><span style='background: #AEF1AE'>Left(ErrorMessage.ErrorZero.message)</span><span style=''>
-</span>21 <span style=''>    case Some(Operation.Multiply)  =&gt; </span><span style='background: #AEF1AE'>Right(calculator.memory * calculator.screen)</span><span style=''>
-</span>22 <span style=''>    case _                      =&gt; </span><span style='background: #AEF1AE'>Left(ErrorMessage.CalculationError.message)</span><span style=''>
-</span>23 <span style=''>  }
-</span>24 <span style=''>
-</span>25 <span style=''>}
-</span>26 <span style=''>
-</span>27 <span style=''>object Calculator {
-</span>28 <span style=''>  sealed trait Operation
-</span>29 <span style=''>  object Operation {
-</span>30 <span style=''>    object Plus extends Operation
-</span>31 <span style=''>    object Minus extends Operation
-</span>32 <span style=''>    object Divide extends Operation
-</span>33 <span style=''>    object Multiply extends Operation
-</span>34 <span style=''>  }
-</span>35 <span style=''>}
-</span>36 <span style=''>
-</span>37 <span style=''>sealed abstract class ErrorMessage(details: String) { def message: String = s&quot;Error: $details&quot; }
-</span>38 <span style=''>object ErrorMessage {
-</span>39 <span style=''>  case object ErrorZero extends ErrorMessage(&quot;You can't divide by 0&quot;)
-</span>40 <span style=''>  case object CalculationError extends ErrorMessage(&quot;Input is not correct&quot;)
-</span>41 <span style=''>}
+</span>3 <span style=''>/** Simple calculator with buttons.
+</span>4 <span style=''>  *
+</span>5 <span style=''>  * @param memory whatever is stored in the memory.
+</span>6 <span style=''>  * @param screen whatever you see on the screen.
+</span>7 <span style=''>  */
+</span>8 <span style=''>case class Calculator(
+</span>9 <span style=''>    memory: Double = 0,
+</span>10 <span style=''>    screen: Double = 0,
+</span>11 <span style=''>    operation: Option[Operation] = None
+</span>12 <span style=''>) {
+</span>13 <span style=''>
+</span>14 <span style=''>  def plus: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Plus))</span><span style=''>
+</span>15 <span style=''>  def minus: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Minus))</span><span style=''>
+</span>16 <span style=''>  def multiply: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Multiply))</span><span style=''>
+</span>17 <span style=''>  def divide: Calculator = </span><span style='background: #AEF1AE'>this.copy(operation = Some(Operation.Divide))</span><span style=''>
+</span>18 <span style=''>
+</span>19 <span style=''>  def calculate(calculator: Calculator): Either[String, Calculator] =
+</span>20 <span style=''>    </span><span style='background: #AEF1AE'>calculator.operation</span><span style=''> match {
+</span>21 <span style=''>      case Some(Operation.Plus) =&gt;
+</span>22 <span style=''>        </span><span style='background: #AEF1AE'>Right(
+</span>23 <span style=''></span><span style='background: #AEF1AE'>          Calculator(memory = 0, screen = calculator.screen + calculator.memory)
+</span>24 <span style=''></span><span style='background: #AEF1AE'>        )</span><span style=''>
+</span>25 <span style=''>      case Some(Operation.Minus) =&gt;
+</span>26 <span style=''>        </span><span style='background: #AEF1AE'>Right(
+</span>27 <span style=''></span><span style='background: #AEF1AE'>          Calculator(memory = 0, screen = calculator.memory - calculator.screen)
+</span>28 <span style=''></span><span style='background: #AEF1AE'>        )</span><span style=''>
+</span>29 <span style=''>      case Some(Operation.Multiply) =&gt;
+</span>30 <span style=''>        if (
+</span>31 <span style=''>          </span><span style='background: #AEF1AE'>Int.MaxValue &gt; calculator.screen * calculator.memory &amp;&amp;
+</span>32 <span style=''></span><span style='background: #AEF1AE'>          Int.MinValue &lt; calculator.screen * calculator.memory</span><span style=''>
+</span>33 <span style=''>        )
+</span>34 <span style=''>          </span><span style='background: #AEF1AE'>Right(
+</span>35 <span style=''></span><span style='background: #AEF1AE'>            Calculator(
+</span>36 <span style=''></span><span style='background: #AEF1AE'>              memory = 0,
+</span>37 <span style=''></span><span style='background: #AEF1AE'>              screen = calculator.screen * calculator.memory
+</span>38 <span style=''></span><span style='background: #AEF1AE'>            )
+</span>39 <span style=''></span><span style='background: #AEF1AE'>          )</span><span style=''>
+</span>40 <span style=''>        else </span><span style='background: #AEF1AE'>Left(&quot;vary big or small digital&quot;)</span><span style=''>
+</span>41 <span style=''>      case Some(Operation.Divide) =&gt;
+</span>42 <span style=''>        if (</span><span style='background: #AEF1AE'>calculator.screen != 0</span><span style=''>)
+</span>43 <span style=''>          </span><span style='background: #AEF1AE'>Right(
+</span>44 <span style=''></span><span style='background: #AEF1AE'>            Calculator(
+</span>45 <span style=''></span><span style='background: #AEF1AE'>              memory = 0,
+</span>46 <span style=''></span><span style='background: #AEF1AE'>              screen = calculator.memory / calculator.screen
+</span>47 <span style=''></span><span style='background: #AEF1AE'>            )
+</span>48 <span style=''></span><span style='background: #AEF1AE'>          )</span><span style=''>
+</span>49 <span style=''>        else </span><span style='background: #AEF1AE'>Left(&quot;Dont can divide on 0&quot;)</span><span style=''>
+</span>50 <span style=''>      case _ =&gt; </span><span style='background: #AEF1AE'>Left(&quot;This command dont exist&quot;)</span><span style=''>
+</span>51 <span style=''>    }
+</span>52 <span style=''>
+</span>53 <span style=''>}
+</span>54 <span style=''>object Calculator {
+</span>55 <span style=''>  sealed trait Operation
+</span>56 <span style=''>  object Operation {
+</span>57 <span style=''>    object Plus extends Operation
+</span>58 <span style=''>    object Minus extends Operation
+</span>59 <span style=''>    object Multiply extends Operation
+</span>60 <span style=''>    object Divide extends Operation
+</span>61 <span style=''>  }
+</span>62 <span style=''>}
 </span></pre>
           </div>
           <div class="tab-pane" id="statementlist">
@@ -76,15 +97,15 @@
         <th>Code</th>
       </tr><tr>
         <td>
-          12
+          14
         </td>
         <td>
           2
         </td>
         <td>
-          347
+          331
           -
-          367
+          351
         </td>
         <td>
           Apply
@@ -97,15 +118,15 @@
         </td>
       </tr><tr>
         <td>
-          12
+          14
         </td>
         <td>
           5
         </td>
         <td>
-          325
+          309
           -
-          368
+          352
         </td>
         <td>
           Apply
@@ -118,15 +139,15 @@
         </td>
       </tr><tr>
         <td>
-          12
+          14
         </td>
         <td>
           4
         </td>
         <td>
-          330
+          314
           -
-          330
+          314
         </td>
         <td>
           Select
@@ -139,15 +160,15 @@
         </td>
       </tr><tr>
         <td>
-          12
+          14
         </td>
         <td>
           1
         </td>
         <td>
-          352
+          336
           -
-          366
+          350
         </td>
         <td>
           Select
@@ -160,15 +181,15 @@
         </td>
       </tr><tr>
         <td>
-          12
+          14
         </td>
         <td>
           3
         </td>
         <td>
-          330
+          314
           -
-          330
+          314
         </td>
         <td>
           Select
@@ -181,15 +202,15 @@
         </td>
       </tr><tr>
         <td>
-          13
+          15
         </td>
         <td>
           8
         </td>
         <td>
-          401
+          384
           -
-          401
+          384
         </td>
         <td>
           Select
@@ -202,15 +223,15 @@
         </td>
       </tr><tr>
         <td>
-          13
+          15
         </td>
         <td>
           7
         </td>
         <td>
-          418
+          401
           -
-          439
+          422
         </td>
         <td>
           Apply
@@ -223,15 +244,15 @@
         </td>
       </tr><tr>
         <td>
-          13
+          15
         </td>
         <td>
           10
         </td>
         <td>
-          396
+          379
           -
-          440
+          423
         </td>
         <td>
           Apply
@@ -244,15 +265,15 @@
         </td>
       </tr><tr>
         <td>
-          13
+          15
         </td>
         <td>
           9
         </td>
         <td>
-          401
+          384
           -
-          401
+          384
         </td>
         <td>
           Select
@@ -265,15 +286,15 @@
         </td>
       </tr><tr>
         <td>
-          13
+          15
         </td>
         <td>
           6
         </td>
         <td>
-          423
+          406
           -
-          438
+          421
         </td>
         <td>
           Select
@@ -286,36 +307,36 @@
         </td>
       </tr><tr>
         <td>
-          14
+          16
         </td>
         <td>
           11
         </td>
         <td>
-          496
+          480
           -
-          512
+          498
         </td>
         <td>
           Select
         </td>
         <td>
-          Calculator.Operation.Divide
+          Calculator.Operation.Multiply
         </td>
         <td style="background: #AEF1AE">
-          Calculator.Operation.Divide
+          Calculator.Operation.Multiply
         </td>
       </tr><tr>
         <td>
-          14
+          16
         </td>
         <td>
           14
         </td>
         <td>
-          474
+          458
           -
-          474
+          458
         </td>
         <td>
           Select
@@ -328,15 +349,15 @@
         </td>
       </tr><tr>
         <td>
-          14
+          16
         </td>
         <td>
           13
         </td>
         <td>
-          474
+          458
           -
-          474
+          458
         </td>
         <td>
           Select
@@ -349,57 +370,15 @@
         </td>
       </tr><tr>
         <td>
-          14
+          16
         </td>
         <td>
           12
         </td>
         <td>
-          491
+          475
           -
-          513
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          scala.Some.apply
-        </td>
-        <td style="background: #AEF1AE">
-          scala.Some.apply[Calculator.Operation.Divide.type](Calculator.Operation.Divide)
-        </td>
-      </tr><tr>
-        <td>
-          14
-        </td>
-        <td>
-          15
-        </td>
-        <td>
-          469
-          -
-          514
-        </td>
-        <td>
-          Apply
-        </td>
-        <td>
-          Calculator.copy
-        </td>
-        <td style="background: #AEF1AE">
-          this.copy(x$2, x$3, x$1)
-        </td>
-      </tr><tr>
-        <td>
-          15
-        </td>
-        <td>
-          17
-        </td>
-        <td>
-          567
-          -
-          591
+          499
         </td>
         <td>
           Apply
@@ -412,15 +391,15 @@
         </td>
       </tr><tr>
         <td>
+          16
+        </td>
+        <td>
           15
         </td>
         <td>
-          20
-        </td>
-        <td>
-          545
+          453
           -
-          592
+          500
         </td>
         <td>
           Apply
@@ -433,36 +412,78 @@
         </td>
       </tr><tr>
         <td>
-          15
+          17
+        </td>
+        <td>
+          17
+        </td>
+        <td>
+          550
+          -
+          572
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Some.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.Some.apply[Calculator.Operation.Divide.type](Calculator.Operation.Divide)
+        </td>
+      </tr><tr>
+        <td>
+          17
+        </td>
+        <td>
+          20
+        </td>
+        <td>
+          528
+          -
+          573
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.copy
+        </td>
+        <td style="background: #AEF1AE">
+          this.copy(x$2, x$3, x$1)
+        </td>
+      </tr><tr>
+        <td>
+          17
         </td>
         <td>
           16
         </td>
         <td>
-          572
+          555
           -
-          590
+          571
         </td>
         <td>
           Select
         </td>
         <td>
-          Calculator.Operation.Multiply
+          Calculator.Operation.Divide
         </td>
         <td style="background: #AEF1AE">
-          Calculator.Operation.Multiply
+          Calculator.Operation.Divide
         </td>
       </tr><tr>
         <td>
-          15
+          17
         </td>
         <td>
           19
         </td>
         <td>
-          550
+          533
           -
-          550
+          533
         </td>
         <td>
           Select
@@ -475,15 +496,15 @@
         </td>
       </tr><tr>
         <td>
-          15
+          17
         </td>
         <td>
           18
         </td>
         <td>
-          550
+          533
           -
-          550
+          533
         </td>
         <td>
           Select
@@ -496,15 +517,15 @@
         </td>
       </tr><tr>
         <td>
-          17
+          20
         </td>
         <td>
           21
         </td>
         <td>
-          663
+          649
           -
-          683
+          669
         </td>
         <td>
           Select
@@ -517,15 +538,120 @@
         </td>
       </tr><tr>
         <td>
-          18
+          22
+        </td>
+        <td>
+          27
+        </td>
+        <td>
+          721
+          -
+          818
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.screen.+(calculator.memory), Calculator.apply$default$3))
+        </td>
+      </tr><tr>
+        <td>
+          23
         </td>
         <td>
           23
         </td>
         <td>
-          733
+          790
           -
+          807
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.memory
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          26
+        </td>
+        <td>
+          738
+          -
+          808
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.apply(0.0, calculator.screen.+(calculator.memory), Calculator.apply$default$3)
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          22
+        </td>
+        <td>
+          758
+          -
+          759
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          25
+        </td>
+        <td>
+          738
+          -
+          738
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.apply$default$3
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.apply$default$3
+        </td>
+      </tr><tr>
+        <td>
+          23
+        </td>
+        <td>
+          24
+        </td>
+        <td>
           770
+          -
+          807
         </td>
         <td>
           Apply
@@ -534,19 +660,61 @@
           scala.Double.+
         </td>
         <td style="background: #AEF1AE">
-          calculator.memory.+(calculator.screen)
+          calculator.screen.+(calculator.memory)
         </td>
       </tr><tr>
         <td>
-          18
+          26
         </td>
         <td>
-          22
+          33
         </td>
         <td>
-          753
+          863
           -
-          770
+          960
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.memory.-(calculator.screen), Calculator.apply$default$3))
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          32
+        </td>
+        <td>
+          880
+          -
+          950
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.apply(0.0, calculator.memory.-(calculator.screen), Calculator.apply$default$3)
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          29
+        </td>
+        <td>
+          932
+          -
+          949
         </td>
         <td>
           Select
@@ -559,36 +727,57 @@
         </td>
       </tr><tr>
         <td>
-          18
+          27
         </td>
         <td>
-          24
+          31
         </td>
         <td>
-          727
+          880
           -
-          771
+          880
         </td>
         <td>
-          Apply
+          Select
         </td>
         <td>
-          scala.util.Right.apply
+          Calculator.apply$default$3
         </td>
         <td style="background: #AEF1AE">
-          scala.`package`.Right.apply[Nothing, Double](calculator.memory.+(calculator.screen))
+          Calculator.apply$default$3
         </td>
       </tr><tr>
         <td>
-          19
+          27
         </td>
         <td>
-          26
+          28
         </td>
         <td>
-          814
+          900
           -
-          851
+          901
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          27
+        </td>
+        <td>
+          30
+        </td>
+        <td>
+          912
+          -
+          949
         </td>
         <td>
           Apply
@@ -601,120 +790,183 @@
         </td>
       </tr><tr>
         <td>
-          19
+          31
         </td>
         <td>
-          25
+          41
         </td>
         <td>
-          834
+          1023
           -
-          851
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          Calculator.screen
-        </td>
-        <td style="background: #AEF1AE">
-          calculator.screen
-        </td>
-      </tr><tr>
-        <td>
-          19
-        </td>
-        <td>
-          27
-        </td>
-        <td>
-          808
-          -
-          852
+          1141
         </td>
         <td>
           Apply
         </td>
         <td>
-          scala.util.Right.apply
+          scala.Boolean.&amp;&amp;
         </td>
         <td style="background: #AEF1AE">
-          scala.`package`.Right.apply[Nothing, Double](calculator.memory.-(calculator.screen))
+          2147483647.&gt;(calculator.screen.*(calculator.memory)).&amp;&amp;(-2147483648.&lt;(calculator.screen.*(calculator.memory)))
         </td>
       </tr><tr>
         <td>
-          20
-        </td>
-        <td>
-          32
-        </td>
-        <td>
-          916
-          -
-          960
-        </td>
-        <td>
-          Block
-        </td>
-        <td>
-          scala.util.Right.apply
-        </td>
-        <td style="background: #AEF1AE">
-          scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
-        </td>
-      </tr><tr>
-        <td>
-          20
+          31
         </td>
         <td>
           35
         </td>
         <td>
-          966
+          1058
           -
-          1002
-        </td>
-        <td>
-          Block
-        </td>
-        <td>
-          scala.util.Left.apply
-        </td>
-        <td style="background: #AEF1AE">
-          scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
-        </td>
-      </tr><tr>
-        <td>
-          20
-        </td>
-        <td>
-          29
-        </td>
-        <td>
-          942
-          -
-          959
+          1075
         </td>
         <td>
           Select
         </td>
         <td>
-          Calculator.screen
+          Calculator.memory
         </td>
         <td style="background: #AEF1AE">
-          calculator.screen
+          calculator.memory
         </td>
       </tr><tr>
-        <td>
-          20
-        </td>
         <td>
           31
         </td>
         <td>
-          916
+          34
+        </td>
+        <td>
+          1023
           -
-          960
+          1035
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          2147483647
+        </td>
+      </tr><tr>
+        <td>
+          31
+        </td>
+        <td>
+          36
+        </td>
+        <td>
+          1038
+          -
+          1075
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen.*(calculator.memory)
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          38
+        </td>
+        <td>
+          1124
+          -
+          1141
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.memory
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          40
+        </td>
+        <td>
+          1089
+          -
+          1141
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Int.&lt;
+        </td>
+        <td style="background: #AEF1AE">
+          -2147483648.&lt;(calculator.screen.*(calculator.memory))
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          37
+        </td>
+        <td>
+          1089
+          -
+          1101
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          -2147483648
+        </td>
+      </tr><tr>
+        <td>
+          32
+        </td>
+        <td>
+          39
+        </td>
+        <td>
+          1104
+          -
+          1141
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen.*(calculator.memory)
+        </td>
+      </tr><tr>
+        <td>
+          34
+        </td>
+        <td>
+          47
+        </td>
+        <td>
+          1162
+          -
+          1305
         </td>
         <td>
           Apply
@@ -723,19 +975,166 @@
           scala.util.Right.apply
         </td>
         <td style="background: #AEF1AE">
-          scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
+          scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.screen.*(calculator.memory), Calculator.apply$default$3))
         </td>
       </tr><tr>
-        <td>
-          20
-        </td>
         <td>
           34
         </td>
         <td>
-          966
+          48
+        </td>
+        <td>
+          1162
           -
-          1002
+          1305
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.util.Right.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.screen.*(calculator.memory), Calculator.apply$default$3))
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          46
+        </td>
+        <td>
+          1181
+          -
+          1293
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          Calculator.apply
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.apply(0.0, calculator.screen.*(calculator.memory), Calculator.apply$default$3)
+        </td>
+      </tr><tr>
+        <td>
+          35
+        </td>
+        <td>
+          45
+        </td>
+        <td>
+          1181
+          -
+          1181
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.apply$default$3
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.apply$default$3
+        </td>
+      </tr><tr>
+        <td>
+          36
+        </td>
+        <td>
+          42
+        </td>
+        <td>
+          1216
+          -
+          1217
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          44
+        </td>
+        <td>
+          1242
+          -
+          1279
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double.*
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.screen.*(calculator.memory)
+        </td>
+      </tr><tr>
+        <td>
+          37
+        </td>
+        <td>
+          43
+        </td>
+        <td>
+          1262
+          -
+          1279
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.memory
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          50
+        </td>
+        <td>
+          1319
+          -
+          1352
+        </td>
+        <td>
+          Block
+        </td>
+        <td>
+          scala.util.Left.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Left.apply[String, Nothing](&quot;vary big or small digital&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          40
+        </td>
+        <td>
+          49
+        </td>
+        <td>
+          1319
+          -
+          1352
         </td>
         <td>
           Apply
@@ -744,19 +1143,19 @@
           scala.util.Left.apply
         </td>
         <td style="background: #AEF1AE">
-          scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+          scala.`package`.Left.apply[String, Nothing](&quot;vary big or small digital&quot;)
         </td>
       </tr><tr>
         <td>
-          20
+          42
         </td>
         <td>
-          28
+          51
         </td>
         <td>
-          892
+          1402
           -
-          914
+          1424
         </td>
         <td>
           Apply
@@ -769,57 +1168,36 @@
         </td>
       </tr><tr>
         <td>
-          20
+          43
         </td>
         <td>
-          30
+          58
         </td>
         <td>
-          922
+          1436
           -
-          959
+          1579
         </td>
         <td>
-          Apply
+          Block
         </td>
         <td>
-          scala.Double./
+          scala.util.Right.apply
         </td>
         <td style="background: #AEF1AE">
-          calculator.memory./(calculator.screen)
+          scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.memory./(calculator.screen), Calculator.apply$default$3))
         </td>
       </tr><tr>
         <td>
-          20
+          43
         </td>
         <td>
-          33
+          57
         </td>
         <td>
-          971
+          1436
           -
-          1001
-        </td>
-        <td>
-          Select
-        </td>
-        <td>
-          ErrorMessage.message
-        </td>
-        <td style="background: #AEF1AE">
-          ErrorMessage.ErrorZero.message
-        </td>
-      </tr><tr>
-        <td>
-          21
-        </td>
-        <td>
-          38
-        </td>
-        <td>
-          1042
-          -
-          1086
+          1579
         </td>
         <td>
           Apply
@@ -828,40 +1206,82 @@
           scala.util.Right.apply
         </td>
         <td style="background: #AEF1AE">
-          scala.`package`.Right.apply[Nothing, Double](calculator.memory.*(calculator.screen))
+          scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.memory./(calculator.screen), Calculator.apply$default$3))
         </td>
       </tr><tr>
         <td>
-          21
+          44
         </td>
         <td>
-          37
+          56
         </td>
         <td>
-          1048
+          1455
           -
-          1085
+          1567
         </td>
         <td>
           Apply
         </td>
         <td>
-          scala.Double.*
+          Calculator.apply
         </td>
         <td style="background: #AEF1AE">
-          calculator.memory.*(calculator.screen)
+          Calculator.apply(0.0, calculator.memory./(calculator.screen), Calculator.apply$default$3)
         </td>
       </tr><tr>
         <td>
-          21
+          44
         </td>
         <td>
-          36
+          55
         </td>
         <td>
-          1068
+          1455
           -
-          1085
+          1455
+        </td>
+        <td>
+          Select
+        </td>
+        <td>
+          Calculator.apply$default$3
+        </td>
+        <td style="background: #AEF1AE">
+          Calculator.apply$default$3
+        </td>
+      </tr><tr>
+        <td>
+          45
+        </td>
+        <td>
+          52
+        </td>
+        <td>
+          1490
+          -
+          1491
+        </td>
+        <td>
+          Literal
+        </td>
+        <td>
+          &lt;nosymbol&gt;
+        </td>
+        <td style="background: #AEF1AE">
+          0.0
+        </td>
+      </tr><tr>
+        <td>
+          46
+        </td>
+        <td>
+          53
+        </td>
+        <td>
+          1536
+          -
+          1553
         </td>
         <td>
           Select
@@ -874,15 +1294,36 @@
         </td>
       </tr><tr>
         <td>
-          22
+          46
         </td>
         <td>
-          40
+          54
         </td>
         <td>
-          1123
+          1516
           -
-          1166
+          1553
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.Double./
+        </td>
+        <td style="background: #AEF1AE">
+          calculator.memory./(calculator.screen)
+        </td>
+      </tr><tr>
+        <td>
+          49
+        </td>
+        <td>
+          59
+        </td>
+        <td>
+          1593
+          -
+          1621
         </td>
         <td>
           Apply
@@ -891,28 +1332,49 @@
           scala.util.Left.apply
         </td>
         <td style="background: #AEF1AE">
-          scala.`package`.Left.apply[String, Nothing](ErrorMessage.CalculationError.message)
+          scala.`package`.Left.apply[String, Nothing](&quot;Dont can divide on 0&quot;)
         </td>
       </tr><tr>
         <td>
-          22
+          49
         </td>
         <td>
-          39
+          60
         </td>
         <td>
-          1128
+          1593
           -
-          1165
+          1621
         </td>
         <td>
-          Select
+          Block
         </td>
         <td>
-          ErrorMessage.message
+          scala.util.Left.apply
         </td>
         <td style="background: #AEF1AE">
-          ErrorMessage.CalculationError.message
+          scala.`package`.Left.apply[String, Nothing](&quot;Dont can divide on 0&quot;)
+        </td>
+      </tr><tr>
+        <td>
+          50
+        </td>
+        <td>
+          61
+        </td>
+        <td>
+          1638
+          -
+          1669
+        </td>
+        <td>
+          Apply
+        </td>
+        <td>
+          scala.util.Left.apply
+        </td>
+        <td style="background: #AEF1AE">
+          scala.`package`.Left.apply[String, Nothing](&quot;This command dont exist&quot;)
         </td>
       </tr>
     </table>

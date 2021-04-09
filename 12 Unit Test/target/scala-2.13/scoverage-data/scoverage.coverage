@@ -19,15 +19,15 @@
 # '' sign
 # ------------------------------------------
 1
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 plus
-352
-366
-12
+336
+350
+14
 Calculator.Operation.Plus
 Select
 false
@@ -36,15 +36,15 @@ false
 Calculator.Operation.Plus
 
 2
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 plus
-347
-367
-12
+331
+351
+14
 scala.Some.apply
 Apply
 false
@@ -53,15 +53,15 @@ false
 scala.Some.apply[Calculator.Operation.Plus.type](Calculator.Operation.Plus)
 
 3
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 plus
-330
-330
-12
+314
+314
+14
 Calculator.copy$default$1
 Select
 false
@@ -70,15 +70,15 @@ false
 this.copy$default$1
 
 4
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 plus
-330
-330
-12
+314
+314
+14
 Calculator.copy$default$2
 Select
 false
@@ -87,15 +87,15 @@ false
 this.copy$default$2
 
 5
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 plus
-325
-368
-12
+309
+352
+14
 Calculator.copy
 Apply
 false
@@ -104,15 +104,15 @@ false
 this.copy(x$2, x$3, x$1)
 
 6
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 minus
-423
-438
-13
+406
+421
+15
 Calculator.Operation.Minus
 Select
 false
@@ -121,15 +121,15 @@ false
 Calculator.Operation.Minus
 
 7
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 minus
-418
-439
-13
+401
+422
+15
 scala.Some.apply
 Apply
 false
@@ -138,15 +138,15 @@ false
 scala.Some.apply[Calculator.Operation.Minus.type](Calculator.Operation.Minus)
 
 8
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 minus
-401
-401
-13
+384
+384
+15
 Calculator.copy$default$1
 Select
 false
@@ -155,15 +155,15 @@ false
 this.copy$default$1
 
 9
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 minus
-401
-401
-13
+384
+384
+15
 Calculator.copy$default$2
 Select
 false
@@ -172,15 +172,15 @@ false
 this.copy$default$2
 
 10
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 minus
-396
-440
-13
+379
+423
+15
 Calculator.copy
 Apply
 false
@@ -189,49 +189,49 @@ false
 this.copy(x$2, x$3, x$1)
 
 11
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-divide
-496
-512
-14
-Calculator.Operation.Divide
+multiply
+480
+498
+16
+Calculator.Operation.Multiply
 Select
 false
 0
 false
-Calculator.Operation.Divide
+Calculator.Operation.Multiply
 
 12
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-divide
-491
-513
-14
+multiply
+475
+499
+16
 scala.Some.apply
 Apply
 false
 0
 false
-scala.Some.apply[Calculator.Operation.Divide.type](Calculator.Operation.Divide)
+scala.Some.apply[Calculator.Operation.Multiply.type](Calculator.Operation.Multiply)
 
 13
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-divide
-474
-474
-14
+multiply
+458
+458
+16
 Calculator.copy$default$1
 Select
 false
@@ -240,15 +240,15 @@ false
 this.copy$default$1
 
 14
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-divide
-474
-474
-14
+multiply
+458
+458
+16
 Calculator.copy$default$2
 Select
 false
@@ -257,15 +257,15 @@ false
 this.copy$default$2
 
 15
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-divide
-469
-514
-14
+multiply
+453
+500
+16
 Calculator.copy
 Apply
 false
@@ -274,49 +274,49 @@ false
 this.copy(x$2, x$3, x$1)
 
 16
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-multiply
-572
-590
-15
-Calculator.Operation.Multiply
+divide
+555
+571
+17
+Calculator.Operation.Divide
 Select
 false
 0
 false
-Calculator.Operation.Multiply
+Calculator.Operation.Divide
 
 17
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-multiply
-567
-591
-15
+divide
+550
+572
+17
 scala.Some.apply
 Apply
 false
 0
 false
-scala.Some.apply[Calculator.Operation.Multiply.type](Calculator.Operation.Multiply)
+scala.Some.apply[Calculator.Operation.Divide.type](Calculator.Operation.Divide)
 
 18
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-multiply
-550
-550
-15
+divide
+533
+533
+17
 Calculator.copy$default$1
 Select
 false
@@ -325,15 +325,15 @@ false
 this.copy$default$1
 
 19
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-multiply
-550
-550
-15
+divide
+533
+533
+17
 Calculator.copy$default$2
 Select
 false
@@ -342,15 +342,15 @@ false
 this.copy$default$2
 
 20
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
-multiply
-545
-592
-15
+divide
+528
+573
+17
 Calculator.copy
 Apply
 false
@@ -359,15 +359,15 @@ false
 this.copy(x$2, x$3, x$1)
 
 21
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-663
-683
-17
+649
+669
+20
 Calculator.operation
 Select
 false
@@ -376,134 +376,134 @@ false
 calculator.operation
 
 22
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-753
-770
-18
-Calculator.screen
+758
+759
+23
+<nosymbol>
+Literal
+false
+0
+false
+0.0
+
+23
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+790
+807
+23
+Calculator.memory
 Select
 false
 0
 false
-calculator.screen
+calculator.memory
 
-23
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+24
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-733
 770
-18
+807
+23
 scala.Double.+
 Apply
 false
 0
 false
-calculator.memory.+(calculator.screen)
-
-24
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
-<empty>
-Calculator
-Class
-Calculator
-calculate
-727
-771
-18
-scala.util.Right.apply
-Apply
-false
-0
-false
-scala.`package`.Right.apply[Nothing, Double](calculator.memory.+(calculator.screen))
+calculator.screen.+(calculator.memory)
 
 25
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-834
-851
-19
-Calculator.screen
+738
+738
+23
+Calculator.apply$default$3
 Select
 false
 0
 false
-calculator.screen
+Calculator.apply$default$3
 
 26
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-814
-851
-19
-scala.Double.-
+738
+808
+23
+Calculator.apply
 Apply
 false
 0
 false
-calculator.memory.-(calculator.screen)
+Calculator.apply(0.0, calculator.screen.+(calculator.memory), Calculator.apply$default$3)
 
 27
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-808
-852
-19
+721
+818
+22
 scala.util.Right.apply
 Apply
 false
 0
 false
-scala.`package`.Right.apply[Nothing, Double](calculator.memory.-(calculator.screen))
+scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.screen.+(calculator.memory), Calculator.apply$default$3))
 
 28
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-892
-914
-20
-scala.Double.!=
-Apply
+900
+901
+27
+<nosymbol>
+Literal
 false
 0
 false
-calculator.screen.!=(0)
+0.0
 
 29
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-942
-959
-20
+932
+949
+27
 Calculator.screen
 Select
 false
@@ -512,117 +512,406 @@ false
 calculator.screen
 
 30
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-922
-959
-20
-scala.Double./
+912
+949
+27
+scala.Double.-
 Apply
 false
 0
 false
-calculator.memory./(calculator.screen)
+calculator.memory.-(calculator.screen)
 
 31
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-916
-960
-20
-scala.util.Right.apply
-Apply
-false
-0
-false
-scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
-
-32
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
-<empty>
-Calculator
-Class
-Calculator
-calculate
-916
-960
-20
-scala.util.Right.apply
-Block
-true
-0
-false
-scala.`package`.Right.apply[Nothing, Double](calculator.memory./(calculator.screen))
-
-33
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
-<empty>
-Calculator
-Class
-Calculator
-calculate
-971
-1001
-20
-ErrorMessage.message
+880
+880
+27
+Calculator.apply$default$3
 Select
 false
 0
 false
-ErrorMessage.ErrorZero.message
+Calculator.apply$default$3
 
-34
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+32
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-966
-1002
-20
+880
+950
+27
+Calculator.apply
+Apply
+false
+0
+false
+Calculator.apply(0.0, calculator.memory.-(calculator.screen), Calculator.apply$default$3)
+
+33
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+863
+960
+26
+scala.util.Right.apply
+Apply
+false
+0
+false
+scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.memory.-(calculator.screen), Calculator.apply$default$3))
+
+34
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1023
+1035
+31
+<nosymbol>
+Literal
+false
+0
+false
+2147483647
+
+35
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1058
+1075
+31
+Calculator.memory
+Select
+false
+0
+false
+calculator.memory
+
+36
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1038
+1075
+31
+scala.Double.*
+Apply
+false
+0
+false
+calculator.screen.*(calculator.memory)
+
+37
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1089
+1101
+32
+<nosymbol>
+Literal
+false
+0
+false
+-2147483648
+
+38
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1124
+1141
+32
+Calculator.memory
+Select
+false
+0
+false
+calculator.memory
+
+39
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1104
+1141
+32
+scala.Double.*
+Apply
+false
+0
+false
+calculator.screen.*(calculator.memory)
+
+40
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1089
+1141
+32
+scala.Int.<
+Apply
+false
+0
+false
+-2147483648.<(calculator.screen.*(calculator.memory))
+
+41
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1023
+1141
+31
+scala.Boolean.&&
+Apply
+false
+0
+false
+2147483647.>(calculator.screen.*(calculator.memory)).&&(-2147483648.<(calculator.screen.*(calculator.memory)))
+
+42
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1216
+1217
+36
+<nosymbol>
+Literal
+false
+0
+false
+0.0
+
+43
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1262
+1279
+37
+Calculator.memory
+Select
+false
+0
+false
+calculator.memory
+
+44
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1242
+1279
+37
+scala.Double.*
+Apply
+false
+0
+false
+calculator.screen.*(calculator.memory)
+
+45
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1181
+1181
+35
+Calculator.apply$default$3
+Select
+false
+0
+false
+Calculator.apply$default$3
+
+46
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1181
+1293
+35
+Calculator.apply
+Apply
+false
+0
+false
+Calculator.apply(0.0, calculator.screen.*(calculator.memory), Calculator.apply$default$3)
+
+47
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1162
+1305
+34
+scala.util.Right.apply
+Apply
+false
+0
+false
+scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.screen.*(calculator.memory), Calculator.apply$default$3))
+
+48
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1162
+1305
+34
+scala.util.Right.apply
+Block
+true
+0
+false
+scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.screen.*(calculator.memory), Calculator.apply$default$3))
+
+49
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1319
+1352
+40
 scala.util.Left.apply
 Apply
 false
 0
 false
-scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+scala.`package`.Left.apply[String, Nothing]("vary big or small digital")
 
-35
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+50
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-966
-1002
-20
+1319
+1352
+40
 scala.util.Left.apply
 Block
 true
 0
 false
-scala.`package`.Left.apply[String, Nothing](ErrorMessage.ErrorZero.message)
+scala.`package`.Left.apply[String, Nothing]("vary big or small digital")
 
-36
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+51
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-1068
-1085
-21
+1402
+1424
+42
+scala.Double.!=
+Apply
+false
+0
+false
+calculator.screen.!=(0)
+
+52
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1490
+1491
+45
+<nosymbol>
+Literal
+false
+0
+false
+0.0
+
+53
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1536
+1553
+46
 Calculator.screen
 Select
 false
@@ -630,71 +919,139 @@ false
 false
 calculator.screen
 
-37
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+54
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-1048
-1085
-21
-scala.Double.*
+1516
+1553
+46
+scala.Double./
 Apply
 false
 0
 false
-calculator.memory.*(calculator.screen)
+calculator.memory./(calculator.screen)
 
-38
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+55
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-1042
-1086
-21
+1455
+1455
+44
+Calculator.apply$default$3
+Select
+false
+0
+false
+Calculator.apply$default$3
+
+56
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1455
+1567
+44
+Calculator.apply
+Apply
+false
+0
+false
+Calculator.apply(0.0, calculator.memory./(calculator.screen), Calculator.apply$default$3)
+
+57
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1436
+1579
+43
 scala.util.Right.apply
 Apply
 false
 0
 false
-scala.`package`.Right.apply[Nothing, Double](calculator.memory.*(calculator.screen))
+scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.memory./(calculator.screen), Calculator.apply$default$3))
 
-39
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+58
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-1128
-1165
-22
-ErrorMessage.message
-Select
-false
+1436
+1579
+43
+scala.util.Right.apply
+Block
+true
 0
 false
-ErrorMessage.CalculationError.message
+scala.`package`.Right.apply[Nothing, Calculator](Calculator.apply(0.0, calculator.memory./(calculator.screen), Calculator.apply$default$3))
 
-40
-C:\Users\rakhub\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+59
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
 <empty>
 Calculator
 Class
 Calculator
 calculate
-1123
-1166
-22
+1593
+1621
+49
 scala.util.Left.apply
 Apply
 false
 0
 false
-scala.`package`.Left.apply[String, Nothing](ErrorMessage.CalculationError.message)
+scala.`package`.Left.apply[String, Nothing]("Dont can divide on 0")
+
+60
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1593
+1621
+49
+scala.util.Left.apply
+Block
+true
+0
+false
+scala.`package`.Left.apply[String, Nothing]("Dont can divide on 0")
+
+61
+C:\Users\Slava_t47\Downloads\Homeworks\12 Unit Test\src\main\scala\Calculator.scala
+<empty>
+Calculator
+Class
+Calculator
+calculate
+1638
+1668
+50
+scala.util.Left.apply
+Apply
+false
+0
+false
+scala.`package`.Left.apply[String, Nothing]("This command not exist")
 

@@ -1,30 +1,13 @@
-[0m[[0m[0mdebug[0m] [0m[0mRunning TaskDef(CalculatorSpec, org.scalatest.tools.Framework$$anon$1@78d2e960, false, [SuiteSelector])[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mCalculatorSpec:[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - print input is not correct[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - addition of two positive numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - addition of a positive and negative number[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - addition of two negative numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - addition of a number and its inverse gives zero[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - difference of two positive numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - difference of positive and negative numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - difference of two negative numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - division of two positive gives a positive[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - division of two negative numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - dividing a negative number by its own gives one[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - division of positive and negative gives a negative[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - dividing zero by a number[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - dividing a number by zero gives an error[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - multiplying a number by 0 gives 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - multiplying of two positive numbers[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - multiplying positive and negative numbers gives a negative[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32m- test - multiplying two negative numbers gives a positive[0m[0m
-[0m[[0m[0mdebug[0m] [0m[0mSummary for ScalaCheck not available.[0m
-[0m[[0m[0minfo[0m] [0m[0mScalaTest[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mRun completed in 444 milliseconds.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTotal number of tests run: 18[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mSuites: completed 1, aborted 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[36mTests: succeeded 18, failed 0, canceled 0, ignored 0, pending 0[0m[0m
-[0m[[0m[0minfo[0m] [0m[0m[32mAll tests passed.[0m[0m
-[0m[[0m[0minfo[0m] [0m[0mPassed: Total 18, Failed 0, Errors 0, Passed 18[0m
-[0m[[0m[0mdebug[0m] [0m[0mPassed tests:[0m
-[0m[[0m[0mdebug[0m] [0m[0m	CalculatorSpec[0m
+[debug] Running TaskDef(CalculatorSpec, org.scalatest.tools.Framework$$anon$1@1f032ac1, false, [SuiteSelector])
+[info] CalculatorSpec:
+[info] - Test calculator plus
+[debug] Summary for ScalaCheck not available.
+[info] ScalaTest
+[info] Run completed in 245 milliseconds.
+[info] Total number of tests run: 1
+[info] Suites: completed 1, aborted 0
+[info] Tests: succeeded 1, failed 0, canceled 0, ignored 0, pending 0
+[info] All tests passed.
+[info] Passed: Total 1, Failed 0, Errors 0, Passed 1
+[debug] Passed tests:
+[debug] 	CalculatorSpec
