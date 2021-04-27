@@ -15,7 +15,6 @@ import org.http4s.server.blaze.BlazeServerBuilder
 import scala.concurrent.ExecutionContext
 import scala.util.Random
 
-
 // Homework. Place the solution under `http` package in your homework repository.
 //
 // Write a server and a client that play a number guessing game together.
@@ -37,8 +36,6 @@ object Protoco {
   final case class Resp(response: String)
   val randomNomberForUser = scala.collection.mutable.Map[String, Int]()
 }
-
-
 
 object GuessServer extends IOApp {
   override def run(args: List[String]): IO[ExitCode] =
@@ -93,7 +90,6 @@ object GuessClient extends IOApp {
 
   private def printLine(string: String = ""): IO[Unit] = IO(println(string))
 
-
   def run(args: List[String]): IO[ExitCode] =
     BlazeClientBuilder[IO](ExecutionContext.global).resource
       .use {
@@ -105,7 +101,8 @@ object GuessClient extends IOApp {
             _ <-
               client
                 .expect[String](
-                  Method.POST(User("John", minRange, maxRange), uri / "range")) >>= printLine
+                  Method.POST(User("John", minRange, maxRange), uri / "range")
+                ) >>= printLine
             _ <- printLine()
 
             _ <- tryingGuess(minRange: Int, maxRange: Int)(client) >>= printLine
@@ -115,14 +112,35 @@ object GuessClient extends IOApp {
       .as(ExitCode.Success)
 
   def tryingGuess(minRange: Int, maxRange: Int)(
-    client: Client[IO]
+      client: Client[IO]
   ): IO[String] = {
     client
       .expect[Resp](
         Method
-          .POST(TryingGuess("John", (maxRange - minRange) / 2 + minRange), uri / "guess"))
-      .flatMap{resp => {if (resp.response == "Great")  {println(s"Hidden number is greater then ${(maxRange - minRange) / 2 + minRange}"); tryingGuess((maxRange - minRange) / 2 + minRange, maxRange)(client)}
-      else if (resp.response == "Low") { println(s"Hidden number is lower then ${(maxRange - minRange) / 2 + minRange}"); tryingGuess(minRange, (maxRange - minRange) / 2 + minRange)(client)}
-      else  {println(); IO.pure(s"You guessed it, the hidden number is ${(maxRange - minRange) / 2 + minRange}") }}}
+          .POST(
+            TryingGuess("John", (maxRange - minRange) / 2 + minRange),
+            uri / "guess"
+          )
+      )
+      .flatMap { resp =>
+        {
+          if (resp.response == "Great") {
+            println(
+              s"Hidden number is greater then ${(maxRange - minRange) / 2 + minRange}"
+            );
+            tryingGuess((maxRange - minRange) / 2 + minRange, maxRange)(client)
+          } else if (resp.response == "Low") {
+            println(
+              s"Hidden number is lower then ${(maxRange - minRange) / 2 + minRange}"
+            );
+            tryingGuess(minRange, (maxRange - minRange) / 2 + minRange)(client)
+          } else {
+            println();
+            IO.pure(
+              s"You guessed it, the hidden number is ${(maxRange - minRange) / 2 + minRange}"
+            )
+          }
+        }
+      }
   }
 }
