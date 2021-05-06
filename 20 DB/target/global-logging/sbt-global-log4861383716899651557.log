@@ -1,0 +1,103 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\rakhub\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\rakhub\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.4.7 (AdoptOpenJDK Java 1.8.0_282)
+[debug]       Load.loadUnit: plugins took 153.4112ms
+[debug]       Load.loadUnit: defsScala took 0.3108ms
+[debug] [Loading] Scanning directory C:\Users\rakhub\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\rakhub\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 42.8866 ms
+[debug]           Load.resolveProject(global-plugins) took 225.8324ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\rakhub\.sbt\1.0\plugins, plugins: List(<none>))) took 604.3696ms
+[debug] [Loading] Done in C:\Users\rakhub\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 633.0236ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.5769ms
+[debug]     Load.loadUnit(file:/C:/Users/rakhub/.sbt/1.0/plugins/, ...) took 800.1113ms
+[debug]   Load.apply: load took 1125.9285ms
+[debug]   Load.apply: resolveProjects took 10.4238ms
+[debug]   Load.apply: finalTransforms took 150.4833ms
+[debug]   Load.apply: config.delegates took 17.4026ms
+[debug]   Load.apply: Def.make(settings)... took 1270.45ms
+[debug]   Load.apply: structureIndex took 150.7433ms
+[debug]   Load.apply: mkStreams took 1.659ms
+[info] loading global plugins from C:\Users\rakhub\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 5031.504ms
+[debug]           Load.loadUnit: plugins took 34.576ms
+[debug]           Load.loadUnit: defsScala took 0.0042ms
+[debug] [Loading] Scanning directory C:\Users\rakhub\Downloads\Homeworks\20 DB\project
+[debug]             Load.loadUnit: mkEval took 7.986ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\Homeworks\20 DB\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 2.372 ms
+[info] loading settings for project root-20-db-build from idea.sbt ...
+[debug]               Load.resolveProject(root-20-db-build) took 4.4066ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id root-20-db-build, base: C:\Users\rakhub\Downloads\Homeworks\20 DB\project, plugins: List(<none>))) took 7.5756ms
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\Homeworks\20 DB\project, returning: (root-20-db-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 3451.7615ms
+[debug]           Load.loadUnit: cleanEvalClasses took 6.7103ms
+[debug]         Load.loadUnit(file:/C:/Users/rakhub/Downloads/Homeworks/20%20DB/project/, ...) took 3494.5084ms
+[debug]       Load.apply: load took 3498.0587ms
+[debug]       Load.apply: resolveProjects took 0.1324ms
+[debug]       Load.apply: finalTransforms took 16.3064ms
+[debug]       Load.apply: config.delegates took 0.5825ms
+[debug]       Load.apply: Def.make(settings)... took 117.4251ms
+[debug]       Load.apply: structureIndex took 41.3101ms
+[debug]       Load.apply: mkStreams took 0.0029ms
+[info] loading project definition from C:\Users\rakhub\Downloads\Homeworks\20 DB\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 5557.4374ms
+[debug]     Load.loadUnit: defsScala took 0.0027ms
+[debug] [Loading] Scanning directory C:\Users\rakhub\Downloads\Homeworks\20 DB
+[debug]       Load.loadUnit: mkEval took 0.267ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\Homeworks\20 DB, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(List(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin))), Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin))), Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin))), Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin))), Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin))), Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin)))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 2.8781 ms
+[info] loading settings for project root-20-db from build.sbt ...
+[debug]         Load.resolveProject(root-20-db) took 57.8016ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id root-20-db, base: C:\Users\rakhub\Downloads\Homeworks\20 DB, plugins: List(<none>))) took 62.405ms
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\Homeworks\20 DB, returning: (root-20-db)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1760.1934ms
+[debug]     Load.loadUnit: cleanEvalClasses took 33.8202ms
+[debug]   Load.loadUnit(file:/C:/Users/rakhub/Downloads/Homeworks/20%20DB/, ...) took 7352.11ms
+[debug] Load.apply: load took 7355.2297ms
+[debug] Load.apply: resolveProjects took 0.1745ms
+[debug] Load.apply: finalTransforms took 47.1558ms
+[debug] Load.apply: config.delegates took 0.299ms
+[debug] Load.apply: Def.make(settings)... took 126.9348ms
+[debug] Load.apply: structureIndex took 24.6181ms
+[debug] Load.apply: mkStreams took 0.002ms
+[info] set current project to 20 DB (in build file:/C:/Users/rakhub/Downloads/Homeworks/20%20DB/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 64609 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 64609, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to 20 DB (in build file:/C:/Users/rakhub/Downloads/Homeworks/20%20DB/)
+[debug] > Exec(idea-shell, None, None)
