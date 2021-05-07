@@ -19,6 +19,7 @@ object DbCommon {
       |  id UUID PRIMARY KEY,
       |  author UUID NOT NULL,
       |  title VARCHAR(100) NOT NULL,
+      |  genre VARCHAR(100) NOT NULL,
       |  year INT,
       |  FOREIGN KEY (author) REFERENCES authors(id));""".stripMargin
 
@@ -28,10 +29,10 @@ object DbCommon {
        |  ('$authorOdersky', 'Martin Odersky', '1958-09-05'),
        |  ('$authorRowling', 'J.K. Rowling', '1965-07-31');
        |
-       |INSERT INTO books (id, author, title, year) VALUES
-       |  ('$bookScala', '$authorOdersky', 'Programming in Scala', 2016),
-       |  ('$bookHPStone', '$authorRowling', 'Harry Potter and Philosopher''s Stone', 1997),
-       |  ('$bookHPSecrets', '$authorRowling', 'Harry Potter and the Chamber of Secrets', 1998);
+       |INSERT INTO books (id, author, title, genre, year) VALUES
+       |  ('$bookScala', '$authorOdersky', 'Programming in Scala', 'science', 2016),
+       |  ('$bookHPStone', '$authorRowling', 'Harry Potter and Philosopher''s Stone', 'fantasy', 1997),
+       |  ('$bookHPSecrets', '$authorRowling', 'Harry Potter and the Chamber of Secrets', 'fantasy', 1998);
        |""".stripMargin
 
   val fetchBooksCommonSql: String =

@@ -20,7 +20,7 @@ object Main extends IOApp {
         for {
           // setup
           _ <- setup().transact(xa)
-          result <- ServerHttp.run(xa)
+          _ <- ServerHttp.run(xa)
         } yield ()
       }
       .as(ExitCode.Success)
