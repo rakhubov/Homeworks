@@ -1,35 +1,23 @@
-import cats.effect._
-import cats.implicits._
-import cats.effect.{Bracket, Effect, ExitCode, IO, IOApp}
-import cats.implicits.toSemigroupKOps
 import cats.data.{NonEmptyList, Validated}
-import io.circe.generic.auto._
-
-import scala.concurrent.ExecutionContext
-import scala.concurrent.ExecutionContext.global
-import org.http4s.server.blaze.BlazeServerBuilder
-import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
-import org.http4s.{HttpApp, HttpRoutes, ParseFailure, QueryParamDecoder}
-import org.http4s.Method.{DELETE, GET, POST}
-import org.http4s.dsl.io._
-import org.http4s.circe.CirceEntityCodec.{circeEntityDecoder, circeEntityEncoder}
-import org.http4s._
-import org.http4s.circe.CirceEntityCodec._
-import org.http4s.implicits._
-import org.http4s.server.blaze._
-
-import java.time.LocalDate
-import java.time.Year
-import java.util.UUID
-import DbCommon._
-import Main._
+import cats.effect.{ExitCode, IO, _}
+import cats.implicits.toSemigroupKOps
 import doobie.implicits._
 import doobie.implicits.legacy.localdate
-import doobie.{ConnectionIO, Fragment, Meta}
-import doobie.{Fragment, Fragments, Transactor}
-import doobie.h2._
-import doobie.Transactor
+import doobie.{Fragment, Fragments, Meta, Transactor}
+import io.circe.generic.auto._
+import org.http4s.Method.POST
+import org.http4s.circe.CirceEntityCodec.{
+  circeEntityDecoder,
+  circeEntityEncoder
+}
+import org.http4s.dsl.io._
+import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
+import org.http4s.server.blaze.BlazeServerBuilder
+import org.http4s.{HttpRoutes, ParseFailure, QueryParamDecoder}
 
+import java.time.{LocalDate, Year}
+import java.util.UUID
+import scala.concurrent.ExecutionContext
 
 object Protoco {
   final case class User(name: String, minRange: Int, maxRange: Int)
@@ -37,8 +25,7 @@ object Protoco {
   final case class Resp(response: String)
   val randomNomberForUser = scala.collection.mutable.Map[String, Int]()
 }
-object ResponseForDataBase{
-
+object ResponseForDataBase {
 
   implicit val UUIDDecoder: QueryParamDecoder[UUID] = { param =>
     Validated
@@ -46,17 +33,20 @@ object ResponseForDataBase{
       .leftMap(t => ParseFailure(s"Failed", t.getMessage))
       .toValidatedNel
   }
-  implicit val uuidMeta: Meta[UUID] = Meta[String].timap(UUID.fromString)(_.toString)
+  implicit val uuidMeta: Meta[UUID] =
+    Meta[String].timap(UUID.fromString)(_.toString)
   implicit val yearMeta: Meta[Year] = Meta[Int].timap(Year.of)(_.getValue)
   implicit val localDateMeta: Meta[LocalDate] = localdate.JavaTimeLocalDateMeta
-
-
 
   val authors: Fragment =
     fr"SELECT id, name, birthday FROM authors"
 
   val books: Fragment =
     fr"SELECT id, author, title, genre, year FROM books"
+
+  val fetchBooksAndAuthor: Fragment =
+    fr"""SELECT b.id, a.id, a.name, a.birthday, b.title, b.year FROM books b
+            INNER JOIN authors a ON b.author = a.id"""
 
   def fetchAuthorById(id: UUID): doobie.Query0[Author] =
     (authors ++ fr"WHERE id = $id").query[Author]
@@ -74,45 +64,61 @@ object ResponseForDataBase{
     (authors ++ fr"WHERE name = $name").query[Author].to[List]
 
   def readAllBooks: doobie.ConnectionIO[List[Book]] =
-    authors.query[Book].to[List]
+    books.query[Book].to[List]
 
-  def fetchBooksByAuthors(ids: NonEmptyList[UUID]): doobie.Query0[BookWithAuthor] = {
-    val queryBooks = fetchBooksAndAuthor ++ fr"WHERE" ++ Fragments.in(fr"author", ids)
+  def fetchBooksByAuthors(authorId: UUID): doobie.ConnectionIO[List[Book]] = {
+    val queryBooks = books ++ fr"WHERE authorId = $authorId"
+    queryBooks.query[Book].to[List]
+  }
+
+  def fetchBooksWithAuthorsByAuthor(
+      ids: NonEmptyList[UUID]
+  ): doobie.Query0[BookWithAuthor] = {
+    val queryBooks =
+      fetchBooksAndAuthor ++ fr"WHERE" ++ Fragments.in(fr"author", ids)
     queryBooks.query[BookWithAuthor]
   }
 
-  def insertAuthor(name: String, birthday: LocalDate): doobie.ConnectionIO[Int] =
-    fr"INSERT INTO authors (id, name, birthday) VALUES (${UUID.randomUUID()}, $name, $birthday)".update.run
-
-  def insertBook(title: String, authorId: UUID, genre: String, year: Year): doobie.ConnectionIO[Int] =
-    fr"INSERT INTO books (id, author, title, genre, year) VALUES (${UUID.randomUUID()}, $authorId, $title, $genre, $year)".update.run
-
-  //
-  //
-  //
-  val fetchBooksAndAuthor: Fragment =
-    fr"""SELECT b.id, a.id, a.name, a.birthday, b.title, b.year FROM books b
-            INNER JOIN authors a ON b.author = a.id"""
-
-  val fetchHarryPotterBooks: doobie.Query0[BookWithAuthor] = {
-    //    val queryAllBooks = Fragment.const(
-    //      """SELECT b.id, a.id, a.name, a.birthday, b.title, b.year FROM books b
-    //          INNER JOIN authors a ON b.author = a.id WHERE b.author = '$authorId2';""".stripMargin,
-    //    )
-    val queryHPBooks = fetchBooksAndAuthor ++ fr"WHERE b.author = $authorRowling;"
-    queryHPBooks.query[BookWithAuthor]
+  def insertAuthor(
+      name: String,
+      birthday: LocalDate
+  ): doobie.ConnectionIO[Int] = {
+    fr"INSERT INTO authors (id, name, birthday) VALUES (${UUID
+      .randomUUID()}, $name, $birthday)".update.run
   }
 
+  def insertBook(
+      authorId: UUID,
+      title: String,
+      genre: String,
+      year: Year
+  ): doobie.ConnectionIO[Int] =
+    fr"INSERT INTO books (id, author, title, genre, year) VALUES (${UUID
+      .randomUUID()}, $authorId, $title, $genre, $year)".update.run
 
-  def fetchBooksByYearRange(yearFrom: Int, yearTo: Int): doobie.ConnectionIO[List[Book]] = (books ++ fr"WHERE year BETWEEN $yearFrom AND $yearTo").query[Book].to[List]
+  def updateAuthor(
+      id: UUID,
+      name: String,
+      birthday: LocalDate
+  ): doobie.ConnectionIO[Int] =
+    fr"UPDATE authors SET (name = $name, birthday = $birthday)  WHERE id = $id".update.run
 
+  def updateYearOfBook(id: UUID, year: Year): doobie.ConnectionIO[Int] =
+    fr"UPDATE books SET year = $year WHERE id = $id".update.run
 
-  def updateYearOfBook(id: UUID, year: Year): doobie.ConnectionIO[Int] = fr"UPDATE books SET year = $year WHERE id = $id".update.run
+  val deleteAllBook: Fragment = fr"DELETE FROM books"
+
+  def deleteBook(id: UUID): doobie.ConnectionIO[List[Book]] = {
+    (deleteAllBook ++ fr"WHERE id = $id").update.run
+    readAllBooks
+  }
+
 }
 
-
 object ServerHttp {
- def run(xa: Transactor[IO])(implicit concurent: ConcurrentEffect[IO], timer: Timer[IO]): IO[ExitCode] =
+  def run(
+      xa: Transactor[IO]
+  )(implicit concurent: ConcurrentEffect[IO], timer: Timer[IO]): IO[ExitCode] =
     BlazeServerBuilder[IO](ExecutionContext.global)
       .bindHttp(port = 9001, host = "localhost")
       .withHttpApp(httpRoute(xa).orNotFound)
@@ -124,14 +130,14 @@ object ServerHttp {
 
   import ResponseForDataBase._
 
-  private def readDataFromTables(xa: Transactor[IO]):HttpRoutes[IO] = {
+  private def readDataFromTables(xa: Transactor[IO]): HttpRoutes[IO] = {
     HttpRoutes.of[IO] {
 
       case authorId @ POST -> Root / "readAuthorById" =>
         for {
-        id <- authorId.as[UUID]
-        author <- fetchAuthorById(id).option.transact(xa)
-        response <- Ok(author)
+          id <- authorId.as[UUID]
+          author <- fetchAuthorById(id).option.transact(xa)
+          response <- Ok(author)
         } yield response
 
       case POST -> Root / "readAllAuthors" =>
@@ -167,58 +173,83 @@ object ServerHttp {
           response <- Ok(book)
         } yield response
 
-      case AuthorId @ POST -> Root / "readBookByAuthors" =>
+      case authorId @ POST -> Root / "readBookByAuthors" =>
         for {
-          author <- AuthorId.as[UUID]
-          book <- fetchBooksByAuthors(NonEmptyList.of(author)).to[List].transact(xa)
+          author <- authorId.as[UUID]
+          book <- fetchBooksByAuthors(author).transact(xa)
+          response <- Ok(book)
+        } yield response
+
+      case authorId @ POST -> Root / "readBookWithAuthorByAuthors" =>
+        for {
+          author <- authorId.as[UUID]
+          book <-
+            fetchBooksWithAuthorsByAuthor(NonEmptyList.of(author))
+              .to[List]
+              .transact(xa)
           response <- Ok(book)
         } yield response
     }
   }
 
-  private def createDataInTables(xa: Transactor[IO]):HttpRoutes[IO] = {
+  private def createDataInTables(xa: Transactor[IO]): HttpRoutes[IO] = {
     HttpRoutes.of[IO] {
 
-      case author@POST -> Root / "creatAuthor" => {
-        val autho = author.as[Author]
+      case author @ POST -> Root / "creatAuthor" =>
         for {
-          _ <-
-            insertAuthor(s"${autho.name}", authorRowling, Year.of(2016))
+          auth <- author.as[Author]
+          author <- insertAuthor(auth.name, auth.birthday).transact(xa)
+          response <- Ok(author)
+        } yield response
 
+      case book @ POST -> Root / "creatBook" =>
+        for {
+          bookk <- book.as[Book]
+          book <-
+            insertBook(bookk.authorId, bookk.title, bookk.genre, bookk.year)
+              .transact(xa)
+          response <- Ok(book)
+        } yield response
+    }
+  }
 
-        } yield ()
+  private def updateDataInTables(xa: Transactor[IO]): HttpRoutes[IO] = {
+    HttpRoutes.of[IO] {
 
-      }
+      case author @ POST -> Root / "updateAuthor" =>
+        for {
+          auth <- author.as[Author]
+          author <- updateAuthor(auth.id, auth.name, auth.birthday).transact(xa)
+          response <- Ok(author)
+        } yield response
 
+      case book @ POST -> Root / "updateBook" =>
+        for {
+          bookk <- book.as[Book]
+          book <- updateYearOfBook(bookk.id, bookk.year)
+            .transact(xa)
+          response <- Ok(book)
+        } yield response
+    }
+  }
+
+  private def deleteData(xa: Transactor[IO]): HttpRoutes[IO] = {
+    HttpRoutes.of[IO] {
+
+      case book @ POST -> Root / "deleteBook" =>
+        for {
+          id <- book.as[UUID]
+          book <- deleteBook(id)
+            .transact(xa)
+          response <- Ok(book)
+        } yield response
     }
   }
 
   private def httpRoute(xa: Transactor[IO]): HttpRoutes[IO] = {
-    readDataFromTables(xa) <+> createDataInTables(xa)
+    readDataFromTables(xa) <+> createDataInTables(xa) <+> updateDataInTables(
+      xa
+    ) <+> deleteData(xa)
   }
-
-
-  //          // business part
-  //          _ <- fetchAuthorById(authorOdersky).option.transact(xa).map(println)
-  //
-  //          //_ <- fetchAuthorById(UUID.randomUUID()).option.transact(xa).map(println)
-  //          //          _ <- fetchHarryPotterBooks.to[List].transact(xa).map(_.foreach(println))
-  //          //          _ <- fetchBooksByAuthors(NonEmptyList.of(authorOdersky, authorRowling))
-  //          //            .to[List]
-  //          //            .transact(xa)
-  //          //            .map(_.foreach(println))
-  //          //          _ <- fetchBooksByYear(1998).transact(xa).map(_.foreach(println))
-  //          //          _ <- fetchBooksByYearRange(1997, 2001).transact(xa).map(_.foreach(println))
-  //          //          _ <-
-  //          //            (insertBook("Harry Potter and the Cursed Child - Parts I & II", authorRowling, Year.of(2016)) *>
-  //          //              fetchBooksByAuthors(NonEmptyList.of(authorRowling)).to[List])
-  //          //              .transact(xa)
-  //          //              .map(_.foreach(println))
-  //          //_ <- updateYearOfBook(bookHPStone, Year.of(2003)).transact(xa)
-  //
-
-
-
-
 
 }

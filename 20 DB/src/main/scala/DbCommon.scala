@@ -35,9 +35,4 @@ object DbCommon {
        |  ('$bookHPSecrets', '$authorRowling', 'Harry Potter and the Chamber of Secrets', 'fantasy', 1998);
        |""".stripMargin
 
-  val fetchBooksCommonSql: String =
-    """SELECT b.id, a.id, a.name, a.birthday, b.title, b.year FROM books b
-      |INNER JOIN authors a ON b.author = a.id """.stripMargin
-
-  val fetchHarryPotterBooksSql: String = fetchBooksCommonSql + s"WHERE b.author = '$authorRowling';"
 }

@@ -1,16 +1,10 @@
-import java.time.Year
-import java.util.UUID
-
-import cats.data.NonEmptyList
+import DbCommon._
 import cats.effect._
-import cats.implicits._
 import doobie._
 import doobie.implicits._
-import doobie.implicits.javatime._
-import doobie.h2._
-import DbCommon._
-import ServerHttp._
 
+import java.time.Year
+import java.util.UUID
 
 object Main extends IOApp {
   override def run(args: List[String]): IO[ExitCode] =
@@ -18,14 +12,14 @@ object Main extends IOApp {
       .pooled[IO]
       .use { xa =>
         for {
-          // setup
           _ <- setup().transact(xa)
           _ <- ServerHttp.run(xa)
         } yield ()
       }
       .as(ExitCode.Success)
 
-  implicit val uuidMeta: Meta[UUID] = Meta[String].timap(UUID.fromString)(_.toString)
+  implicit val uuidMeta: Meta[UUID] =
+    Meta[String].timap(UUID.fromString)(_.toString)
   implicit val yearMeta: Meta[Year] = Meta[Int].timap(Year.of)(_.getValue)
 
   // setup
@@ -40,5 +34,3 @@ object Main extends IOApp {
       _ <- dml.update.run
     } yield ()
 }
-
-
