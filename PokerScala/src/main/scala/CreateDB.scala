@@ -8,20 +8,34 @@ object DbCommon {
   val bookHPStone: UUID = UUID.randomUUID()
   val bookHPSecrets: UUID = UUID.randomUUID()
 
-  val createTableAuthorsSql: String =
-    """CREATE TABLE authors (
+  val createTablePlayerRegistrationSql: String =
+    """CREATE TABLE registration (
       |  id UUID PRIMARY KEY,
       |  name VARCHAR(100) NOT NULL,
-      |  birthday DATE);""".stripMargin
+      |  moneyPersonalAccount INT);""".stripMargin
 
-  val createTableBooksSql: String =
-    """CREATE TABLE books (
+  val createTableGameTableSql: String =
+    """CREATE TABLE table (
       |  id UUID PRIMARY KEY,
-      |  author UUID NOT NULL,
-      |  title VARCHAR(100) NOT NULL,
-      |  genre VARCHAR(100) NOT NULL,
-      |  year INT,
-      |  FOREIGN KEY (author) REFERENCES authors(id));""".stripMargin
+      |  startGame BIT,
+      |  namePlayer TEXT,
+      |  bidForTable INT,
+      |  dealerName UUID,
+      |  playerInGame TEXT,
+      |  numberOpenCard INT,
+      |  generatedCards VARCHAR(200));""".stripMargin
+
+  val createTablePlayerAtTableSql: String =
+    """CREATE TABLE player (
+      |  playerID UUID PRIMARY KEY,
+      |  tableID UUID NOT NULL,
+      |  name VARCHAR(100) NOT NULL,
+      |  money INT,
+      |  playerBid INT,
+      |  playerCard VARCHAR(20),
+      |  tableAndPlayerCard VARCHAR(70),
+      |  cardForCombination VARCHAR(50),
+      |  FOREIGN KEY (table) REFERENCES authors(id));""".stripMargin
 
   val populateDataSql: String =
     s"""
