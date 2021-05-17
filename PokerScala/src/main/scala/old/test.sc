@@ -1,18 +1,20 @@
 import cats.effect._
 import cats.effect.concurrent.Ref
+import doobie.Meta
+import cats.effect.concurrent.Ref
+import cats.effect.{ExitCode, IO, IOApp}
+import cats.implicits.{catsSyntaxFlatMapOps, catsSyntaxPartialOrder}
 
-val player = Ref.of[IO, Map[String, Int]](Map("1" -> 2))
+import scala.concurrent.duration.DurationInt
+import java.util.UUID
+import scala.concurrent.Future.never.value
 
-val players = Ref[IO].of(List(12))
-players.map(_.update(_ => List(23))).unsafeRunSync()
+implicit val uuidMeta: String =>
+  UUID = {x => UUID.fromString(x)}
 
-val as =
- for {
-  ref   <- players
-  value <- ref.get
+val bookHPStone: UUID = UUID.randomUUID()
+val v =bookHPStone.toString
+val b:UUID = UUID.fromString(v)
+bookHPStone == bookHPStone
+bookHPStone == v
 
- v2 = value.map(_ *2)
-} yield v2
-val z =
- as.unsafeRunSync()
-z

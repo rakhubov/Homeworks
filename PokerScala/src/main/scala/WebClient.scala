@@ -17,7 +17,7 @@ object WebSocketClient extends IOApp {
 
     clientResource.use { client =>
       for {
-        _ <- client.send(WSFrame.Text("range"))
+        _ <- client.send(WSFrame.Text("registration Lord 100"))
         _ <- client.send(WSFrame.Text("hello2"))
         _ <- client.send(WSFrame.Text("hello3"))
         _ <- (client.receiveStream

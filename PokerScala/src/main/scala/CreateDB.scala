@@ -1,12 +1,6 @@
-import java.util.UUID
+import doobie.{ConnectionIO, Fragment}
 
-object DbCommon {
-
-  val authorOdersky: UUID = UUID.randomUUID()
-  val authorRowling: UUID = UUID.randomUUID()
-  val bookScala: UUID = UUID.randomUUID()
-  val bookHPStone: UUID = UUID.randomUUID()
-  val bookHPSecrets: UUID = UUID.randomUUID()
+object CreateDB {
 
   val createTablePlayerRegistrationSql: String =
     """CREATE TABLE registration (
@@ -15,10 +9,10 @@ object DbCommon {
       |  moneyPersonalAccount INT);""".stripMargin
 
   val createTableGameTableSql: String =
-    """CREATE TABLE table (
+    """CREATE TABLE tables (
       |  id UUID PRIMARY KEY,
       |  startGame BIT,
-      |  namePlayer TEXT,
+      |  idPlayer TEXT,
       |  bidForTable INT,
       |  dealerName UUID,
       |  playerInGame TEXT,
@@ -26,7 +20,7 @@ object DbCommon {
       |  generatedCards VARCHAR(200));""".stripMargin
 
   val createTablePlayerAtTableSql: String =
-    """CREATE TABLE player (
+    """CREATE TABLE players (
       |  playerID UUID PRIMARY KEY,
       |  tableID UUID NOT NULL,
       |  name VARCHAR(100) NOT NULL,
@@ -34,19 +28,16 @@ object DbCommon {
       |  playerBid INT,
       |  playerCard VARCHAR(20),
       |  tableAndPlayerCard VARCHAR(70),
-      |  cardForCombination VARCHAR(50),
-      |  FOREIGN KEY (table) REFERENCES authors(id));""".stripMargin
+      |  cardForCombination VARCHAR(50);""".stripMargin
 
-  val populateDataSql: String =
-    s"""
-       |INSERT INTO authors (id, name, birthday) VALUES
-       |  ('$authorOdersky', 'Martin Odersky', '1958-09-05'),
-       |  ('$authorRowling', 'J.K. Rowling', '1965-07-31');
-       |
-       |INSERT INTO books (id, author, title, genre, year) VALUES
-       |  ('$bookScala', '$authorOdersky', 'Programming in Scala', 'science', 2016),
-       |  ('$bookHPStone', '$authorRowling', 'Harry Potter and Philosopher''s Stone', 'fantasy', 1997),
-       |  ('$bookHPSecrets', '$authorRowling', 'Harry Potter and the Chamber of Secrets', 'fantasy', 1998);
-       |""".stripMargin
+  val registration = Fragment.const(createTablePlayerRegistrationSql)
+  val tables = Fragment.const(createTableGameTableSql)
+  val players = Fragment.const(createTablePlayerAtTableSql)
 
+  def setup(): ConnectionIO[Unit] =
+    for {
+      _ <- registration.update.run
+      _ <- tables.update.run
+      _ <- players.update.run
+    } yield ()
 }

@@ -1,27 +1,28 @@
 import cats.effect.{Async, Blocker, ContextShift, Resource}
-import DbConfig.{dbDriverName, dbPwd, dbUrl, dbUser}
 import doobie.hikari.HikariTransactor
 import doobie.{ExecutionContexts, Transactor}
 
-object DbTransactor {
+object DbConfig {
+  val dbDriverName = "org.h2.Driver"
+  val dbUrl = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"
+  val dbUser = ""
+  val dbPwd = ""
+}
 
-  /** `transactor` backed by connection pool
-    * It uses 3 execution contexts:
-    *  1 - for handling queue of connection requests
-    *  2 - for handling blocking result retrieval
-    *  3 - CPU-bound provided by `ContextShift` (usually `global` from `IOApp`)
-    */
+object DbTransactor {
+  import DbConfig._
+
   def pooled[F[_]: ContextShift: Async]: Resource[F, Transactor[F]] =
     for {
-      ce <- ExecutionContexts.fixedThreadPool[F](10)
-      be <- Blocker[F]
-      xa <- HikariTransactor.newHikariTransactor[F](
+      awaitConnect <- ExecutionContexts.fixedThreadPool[F](10)
+      executeJDBC <- Blocker[F]
+      connett <- HikariTransactor.newHikariTransactor[F](
         driverClassName = dbDriverName,
         url = dbUrl,
         user = dbUser,
         pass = dbPwd,
-        connectEC = ce, // await connection on this EC
-        blocker = be // execute JDBC operations on this EC
+        connectEC = awaitConnect, // await connection on this EC
+        blocker = executeJDBC // execute JDBC operations on this EC
       )
-    } yield xa
+    } yield connett
 }
