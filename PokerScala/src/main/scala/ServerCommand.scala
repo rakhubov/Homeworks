@@ -2,8 +2,11 @@ import cats.effect.IO
 import cats.effect.concurrent.Ref
 import doobie.Transactor
 import doobie.implicits._
+
 import java.util.UUID
 import RequestInDB._
+
+import scala.util.control.Breaks.break
 
 object ServerPrivateCommand {
 
@@ -16,8 +19,20 @@ object ServerPrivateCommand {
         money.toIntOption match {
           case Some(moneyInt) =>
             val id = UUID.randomUUID();
-            registrationInDB(id, name, moneyInt).transact(connectToDataBase);
-            s"you id $id"
+            //           registrationInDB(id, name, moneyInt).transact(connectToDataBase);
+            (for {
+              _ <-
+                registrationInDB(id, "Lord", 1000).transact(connectToDataBase)
+              dfd <-
+                fetchMoneyPlayerAccountByID(id)
+                  .to[List]
+                  .transact(connectToDataBase)
+                  .map(_.foreach(println))
+              _ = println(dfd)
+              _ = println("---000---")
+              str = s"id $id"
+            } yield str).unsafeRunSync()
+          //       s"id $id"
         }
       case _ => s"$message is invalid data"
     }
@@ -30,7 +45,7 @@ object ServerPrivateCommand {
     message.split("\\s+").toList match {
       case "registration" :: next =>
         registrationForPlayer(next, connectToDataBase)
-      case _ => s"$message is invalid request"
+      case _ => s"$message is invalid private request"
     }
   }
 }
@@ -52,34 +67,28 @@ object ServerSharedCommand {
           money.toIntOption
         ) match {
           case (Some(validPlayerID), Some(validBid), Some(validMoney)) =>
-            for {
+            (for {
               moneyPlayerAccount <-
-                fetchMoneyPlayerAccountByID(validPlayerID)
-                  .option
-                  .transact(
-                    connectToDataBase
-                  )
-              moneySome = moneyPlayerAccount match {
-                case Some(value) => value}
-            moneyMessage = if(moneySome > validBid * 10) ""
-
-            } yield ()
-        }
-
-      case playerID :: bid :: money :: Nil =>
-        (
-          Option(UUID.fromString(playerID)),
-          bid.toIntOption,
-          money.toIntOption
-        ) match {
-          case (Some(validPlayerID), Some(validBid), Some(validMoney)) =>
-            for {
-              tablesID <-
-                fetchTableByBidNotStart(validBid)
+//                fetchMoneyPlayerAccountByID(validPlayerID).option
+//                  .transact(
+//                    connectToDataBase
+//                  )
+                fetchMoneyPlayerAccountAll
                   .to[List]
-                  .transact(
-                    connectToDataBase
-                  )
+                  .transact((connectToDataBase))
+              _ = println(moneyPlayerAccount)
+              tablesID <- moneyPlayerAccount.headOption match {
+                case Some(money) =>
+                  if (money >= validMoney && validMoney >= validBid * 10) {
+                    //funk (accaunt - moneytable)
+                    fetchTableByBidNotStart(validBid)
+                      .to[List]
+                      .transact(
+                        connectToDataBase
+                      )
+                  } else break
+                case _ => break
+              }
               tableID = tablesID.headOption match {
                 case Some(id) => id
                 case _ =>
@@ -101,9 +110,13 @@ object ServerSharedCommand {
               _ <- playerSitsAtTable(playerID, tableID).transact(
                 connectToDataBase
               )
-            } yield () s"Player $playerID sat down at the table with a bet of $bid"
+              //all player
+              messageComplite =
+                s"PlayerAtTable $nameString $tableID $validMoney"
+            } yield messageComplite).unsafeRunSync()
         }
-      case _ => s"$message is invalid data"
+      case _ =>
+        s"error $message is invalid data, money need be more then bid * 10"
     }
   }
 
@@ -114,7 +127,7 @@ object ServerSharedCommand {
     message.split("\\s+").toList match {
       case "game" :: next =>
         tableSearch(next, connectToDataBase)
-      case _ => s"$message is invalid request"
+      case _ => s"$message is invalid shared request"
     }
   }
 }

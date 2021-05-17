@@ -47,7 +47,7 @@ object RequestInDB {
     fr" (id, name, moneyPersonalAccount) VALUES"
 
   val addTable: Fragment = fr"INSERT INTO tables" ++
-    fr" (id, startGame, bidForTable, numberOpenCard) VALUES"
+    fr" (id, startGame, idPlayer, bidForTable, numberOpenCard) VALUES"
 
   val addPlayer: Fragment = fr"INSERT INTO players" ++
     fr" (playerID, tableID, name, money) VALUES"
@@ -56,14 +56,18 @@ object RequestInDB {
       id: UUID,
       name: String,
       moneyPersonalAccount: Int
-  ): doobie.ConnectionIO[Int] =
-    (addRegistration ++ fr" ($id, $name, $moneyPersonalAccount)").update.run
+  ): doobie.ConnectionIO[Int] = {
+    val i = UUID.randomUUID()
+    val l = "lord"
+    val player = (addRegistration ++ fr" ($i, $l, 200)")
+    player.update.run
+  }
 
   def fetchTableByBidNotStart(bid: Int): doobie.Query0[UUID] =
     (tablesID ++ fr"WHERE bidForTable = $bid AND startGame = 0").query[UUID]
 
   def createTable(id: UUID, validBid: Int): doobie.ConnectionIO[Int] =
-    (addTable ++ fr" ($id, 0, $validBid, 0)").update.run
+    (addTable ++ fr" ($id, 0, ' ', $validBid, 0)").update.run
 
   def fetchNameByID(validPlayerID: UUID): doobie.Query0[String] =
     (playerName ++ fr"WHERE id = $validPlayerID").query[String]
@@ -80,11 +84,14 @@ object RequestInDB {
       validPlayerID: String,
       tableID: UUID
   ): doobie.ConnectionIO[Int] =
-    (fr"UPDATE tables SET (idPlayer = CASE WHEN" ++
+    (fr"UPDATE tables SET idPlayer = CASE WHEN" ++
       fr" idPlayer IS NULL THEN $validPlayerID ELSE" ++
-      fr" CONCAT(idPlayer, ' ', $validPlayerID)) END" ++
+      fr" CONCAT(idPlayer, ' ', $validPlayerID) END" ++
       fr" WHERE id = $tableID").update.run
 
   def fetchMoneyPlayerAccountByID(playerId: UUID): doobie.Query0[Int] =
     (registrationMoney ++ fr"WHERE id = $playerId").query[Int]
+
+  def fetchMoneyPlayerAccountAll: doobie.Query0[Int] =
+    registrationMoney.query[Int]
 }

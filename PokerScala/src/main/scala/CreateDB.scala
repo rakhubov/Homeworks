@@ -12,7 +12,7 @@ object CreateDB {
     """CREATE TABLE tables (
       |  id UUID PRIMARY KEY,
       |  startGame BIT,
-      |  idPlayer TEXT,
+      |  idPlayer TEXT NOT NULL,
       |  bidForTable INT,
       |  dealerName UUID,
       |  playerInGame TEXT,
@@ -28,7 +28,7 @@ object CreateDB {
       |  playerBid INT,
       |  playerCard VARCHAR(20),
       |  tableAndPlayerCard VARCHAR(70),
-      |  cardForCombination VARCHAR(50);""".stripMargin
+      |  cardForCombination VARCHAR(50));""".stripMargin
 
   val registration = Fragment.const(createTablePlayerRegistrationSql)
   val tables = Fragment.const(createTableGameTableSql)
