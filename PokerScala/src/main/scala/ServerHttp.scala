@@ -65,13 +65,13 @@ object WebSocketServer {
 
       case GET -> Root / "private" =>
         import ServerPrivateCommand.checkPrivatRequestion
-        val checkMessage: Pipe[IO, WebSocketFrame, WebSocketFrame] =
-          _.collect {
-            case WebSocketFrame.Text(message, _) =>
-              WebSocketFrame.Text(
-                checkPrivatRequestion(message, connectToDataBase)
-              )
-          }
+
+        val checkMessage: Pipe[IO, WebSocketFrame, WebSocketFrame] = _.evalMap {
+          case WebSocketFrame.Text(message, _) =>
+            checkPrivatRequestion(message, connectToDataBase).map(response =>
+              WebSocketFrame.Text(response)
+            )
+        }
 
         for {
           queue <- Queue.bounded[IO, WebSocketFrame](20)
@@ -93,9 +93,10 @@ object WebSocketServer {
 
       case GET -> Root / "chat" =>
         import ServerSharedCommand.checkSharedRequestion
+
         WebSocketBuilder[IO].build(
           receive =
-            chatTopic.publish.compose[Stream[IO, WebSocketFrame]](_.collect {
+            chatTopic.publish.compose[Stream[IO, WebSocketFrame]](_.evalMap {
               case WebSocketFrame.Text(message, _) =>
                 checkSharedRequestion(message, connectToDataBase)
             }),

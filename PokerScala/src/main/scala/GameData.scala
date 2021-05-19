@@ -21,7 +21,7 @@ final case class PlayerAtTable(
     playerID: UUID,
     tableID: UUID,
     name: String,
-    money: Int,
+    money: Int = 0,
     playerBid: Int = 0,
     playerCard: List[Int] = List(),
     tableAndPlayerCard: List[Int] = List(),

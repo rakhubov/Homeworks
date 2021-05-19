@@ -11,7 +11,7 @@ object Main extends IOApp {
       .use { connectToDataBase =>
         for {
           _ <- CreateDB.setup().transact(connectToDataBase)
-          id = UUID.fromString("ef8737a8-7fe1-4cfe-9739-263d70937a0d")
+          //         id = UUID.fromString("ef8737a8-7fe1-4cfe-9739-263d70937a0d")
           //         _ <- registrationInDB(id, "Lord", 1000).transact(connectToDataBase)
           //        _ <-
 //            fetchMoneyPlayerAccountByID(id)

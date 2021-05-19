@@ -40,6 +40,9 @@ object RequestInDB {
   val registrationMoney: Fragment =
     fr"SELECT moneyPersonalAccount FROM registration"
 
+  val registrationID: Fragment =
+    fr"SELECT id  FROM registration"
+
   val playerName: Fragment =
     fr"SELECT name FROM registration"
 
@@ -52,22 +55,35 @@ object RequestInDB {
   val addPlayer: Fragment = fr"INSERT INTO players" ++
     fr" (playerID, tableID, name, money) VALUES"
 
+  val tableIDForPlayer: Fragment = fr"SELECT tableID FROM players"
+
+  val playersIDFromTable: Fragment = fr"SELECT idPlayer FROM tables"
+
   def registrationInDB(
       id: UUID,
       name: String,
       moneyPersonalAccount: Int
   ): doobie.ConnectionIO[Int] = {
-    val i = UUID.randomUUID()
-    val l = "lord"
-    val player = (addRegistration ++ fr" ($i, $l, 200)")
-    player.update.run
+    (addRegistration ++ fr" ($id, $name, $moneyPersonalAccount)").update.run
   }
 
   def fetchTableByBidNotStart(bid: Int): doobie.Query0[UUID] =
     (tablesID ++ fr"WHERE bidForTable = $bid AND startGame = 0").query[UUID]
 
+  def fetchTableByPlayerID(playerID: UUID): doobie.Query0[UUID] =
+    (tableIDForPlayer ++ fr"WHERE  playerID = $playerID").query[UUID]
+
+  def fetchListPlayerID(tableID: UUID): doobie.Query0[String] =
+    (playersIDFromTable ++ fr"WHERE  id = $tableID").query[String]
+
   def createTable(id: UUID, validBid: Int): doobie.ConnectionIO[Int] =
     (addTable ++ fr" ($id, 0, ' ', $validBid, 0)").update.run
+
+  def editTable(id: UUID, validBid: Int): doobie.ConnectionIO[Int] =
+    fr"UPDATE tables SET bidForTable = $validBid WHERE id = $id".update.run
+
+  def startGameForTable(tableID: UUID): doobie.ConnectionIO[Int] =
+    fr"UPDATE tables SET startGame = 1 WHERE id = $tableID".update.run
 
   def fetchNameByID(validPlayerID: UUID): doobie.Query0[String] =
     (playerName ++ fr"WHERE id = $validPlayerID").query[String]
@@ -94,4 +110,7 @@ object RequestInDB {
 
   def fetchMoneyPlayerAccountAll: doobie.Query0[Int] =
     registrationMoney.query[Int]
+
+  def fetchregistrationAll: doobie.Query0[UUID] =
+    registrationID.query[UUID]
 }
