@@ -1,4 +1,4 @@
-import CardManipulation.{writePlayerCard, _}
+import CardManipulation._
 import cats.effect.IO
 import cats.effect.concurrent.Ref
 import doobie.Transactor
@@ -109,35 +109,34 @@ object ServerSharedCommand {
       connectToDataBase: Transactor[IO]
   ): IO[String] =
     for {
-//      tableID <-
-//        fetchTableByPlayerID(UUID.fromString(playerID)).option
-//          .transact(
-//            connectToDataBase
-//          )
-//      someTableID = tableID.getOrElse(UUID.randomUUID())
-//      _ <- startGameForTable(someTableID)
-//        .transact(connectToDataBase)
-//      listPlayersID <-
-//        fetchListPlayerID(someTableID).option
-//          .transact(
-//            connectToDataBase
-//          )
-//      stringListID = listPlayersID.getOrElse("").trim
-//      playersNumber = stringListID.split("\\s+").toList.size
-//      numberCard = 5 + playersNumber * 2
-//      allCardInGame = generationCard(numberCard).toList
-//      cardTable = allCardInGame.take(5)
-//      allCardInHands = allCardInGame.takeRight(numberCard - 5)
-//      _ <- writePlayerCard(
-//        cardTable,
-//        allCardInHands,
-//        stringListID,
+      tableID <-
+        fetchTableByPlayerID(UUID.fromString(playerID)).option
+          .transact(
+            connectToDataBase
+          )
+      someTableID = tableID.getOrElse(UUID.randomUUID())
+      _ <- startGameForTable(someTableID)
+        .transact(connectToDataBase)
+      listPlayersID <-
+        fetchListPlayerID(someTableID).option
+          .transact(
+            connectToDataBase
+          )
+      stringListID = listPlayersID.getOrElse("").trim
+      playersNumber = stringListID.split("\\s+").toList.size
+      numberCard = 5 + playersNumber * 2
+      allCardInGame = generationCard(numberCard).toList
+      cardTable = allCardInGame.take(5)
+      allCardInHands = allCardInGame.takeRight(numberCard - 5)
       _ <- writePlayerCard(
+        cardTable,
+        allCardInHands,
+        stringListID.split("\\s+").toList,
         connectToDataBase
       )
 
-      response = ""
-//        s"$cardTable , $allCardInHands , $stringListID" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
+      response =
+        s"$cardTable , $allCardInHands , $stringListID" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
     } yield response
 
   def checkSharedRequestion(
