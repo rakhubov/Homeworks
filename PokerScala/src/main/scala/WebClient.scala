@@ -27,7 +27,7 @@ object WebSocketClient extends IOApp {
     //
     val mayID = clientPrivateResource.use { client =>
       for {
-        _ <- client.send(WSFrame.Text("registration Lord 2000"))
+        _ <- client.send(WSFrame.Text("registration Lord1 2000"))
         recive <- client.receive
         idString = recive match {
           case Some(WSFrame.Text(message, _)) =>
@@ -43,7 +43,7 @@ object WebSocketClient extends IOApp {
     clientSharedResource.use { client =>
       for {
         idUUID <- mayID
-        _ <- client.send(WSFrame.Text(s"game $idUUID 10 1000"))
+        _ <- client.send(WSFrame.Text(s"game $idUUID 10 1001"))
         _ <-
           client.receiveStream
             .collectFirst {
@@ -93,7 +93,7 @@ object WebSocketClient2 extends IOApp {
     //
     val mayID = clientPrivateResource.use { client =>
       for {
-        _ <- client.send(WSFrame.Text("registration Lord 2000"))
+        _ <- client.send(WSFrame.Text("registration Lord2 2000"))
         recive <- client.receive
         idString = recive match {
           case Some(WSFrame.Text(message, _)) =>
@@ -110,7 +110,7 @@ object WebSocketClient2 extends IOApp {
       for {
         idUUID <- mayID
         _ <- client.send(WSFrame.Text(s"dfgssdaaaaaaa"))
-        _ <- client.send(WSFrame.Text(s"game $idUUID 10 1000"))
+        _ <- client.send(WSFrame.Text(s"game $idUUID 10 1002"))
 
         _ <-
           client.receiveStream

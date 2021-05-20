@@ -111,6 +111,15 @@ object RequestInDB {
   def fetchMoneyPlayerAccountAll: doobie.Query0[Int] =
     registrationMoney.query[Int]
 
-  def fetchregistrationAll: doobie.Query0[UUID] =
+  def fetchRegistrationAll: doobie.Query0[UUID] =
     registrationID.query[UUID]
+
+  def writeAllPlayerCard(
+      tablePlayerCard: String,
+      twoCard: String,
+      playerID: UUID
+  ): doobie.ConnectionIO[Int] =
+    (fr"UPDATE players SET playerCard = $twoCard AND" ++
+      fr" tableAndPlayerCard = $tablePlayerCard WHERE" ++
+      fr" playerID = $playerID").update.run
 }

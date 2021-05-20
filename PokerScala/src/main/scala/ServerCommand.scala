@@ -1,4 +1,4 @@
-import CardManipulation.generationCard
+import CardManipulation.{writePlayerCard, _}
 import cats.effect.IO
 import cats.effect.concurrent.Ref
 import doobie.Transactor
@@ -6,6 +6,7 @@ import doobie.implicits._
 
 import java.util.UUID
 import RequestInDB._
+import cats.implicits.catsSyntaxApplicativeId
 import org.http4s.client.jdkhttpclient.WSFrame.Text
 object ServerPrivateCommand {
 
@@ -69,7 +70,7 @@ object ServerSharedCommand {
               _ <- tablesID.headOption match {
                 case Some(id) => {
                   refTableID.set(id) *>
-                    editTable(id, validBid).transact(connectToDataBase)
+                    ().pure[IO]
                 }
                 case _ => {
                   val id = UUID.randomUUID();
@@ -108,24 +109,35 @@ object ServerSharedCommand {
       connectToDataBase: Transactor[IO]
   ): IO[String] =
     for {
-      tableID <-
-        fetchTableByPlayerID(UUID.fromString(playerID)).option
-          .transact(
-            connectToDataBase
-          )
-      someTableID = tableID.getOrElse(UUID.randomUUID())
-      _ <- startGameForTable(someTableID)
-        .transact(connectToDataBase)
-      listPlayersID <-
-        fetchListPlayerID(someTableID).option
-          .transact(
-            connectToDataBase
-          )
-      stringListID = listPlayersID.getOrElse("")
-      playersNumber = stringListID.split("\\s+").toList.size
-      nomberCcard = 5 + playersNumber * 2
-      allCardInGame = generationCard(nomberCcard)
-      response = s"start ${tableID.getOrElse(UUID.randomUUID())}"
+//      tableID <-
+//        fetchTableByPlayerID(UUID.fromString(playerID)).option
+//          .transact(
+//            connectToDataBase
+//          )
+//      someTableID = tableID.getOrElse(UUID.randomUUID())
+//      _ <- startGameForTable(someTableID)
+//        .transact(connectToDataBase)
+//      listPlayersID <-
+//        fetchListPlayerID(someTableID).option
+//          .transact(
+//            connectToDataBase
+//          )
+//      stringListID = listPlayersID.getOrElse("").trim
+//      playersNumber = stringListID.split("\\s+").toList.size
+//      numberCard = 5 + playersNumber * 2
+//      allCardInGame = generationCard(numberCard).toList
+//      cardTable = allCardInGame.take(5)
+//      allCardInHands = allCardInGame.takeRight(numberCard - 5)
+//      _ <- writePlayerCard(
+//        cardTable,
+//        allCardInHands,
+//        stringListID,
+      _ <- writePlayerCard(
+        connectToDataBase
+      )
+
+      response = ""
+//        s"$cardTable , $allCardInHands , $stringListID" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
     } yield response
 
   def checkSharedRequestion(

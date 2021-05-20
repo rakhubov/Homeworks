@@ -1,24 +1,15 @@
-import cats.data.OptionT
-import cats.effect._
-import cats.effect.concurrent.Ref
-import doobie.Meta
-import java.util.UUID
-import scala.util.Random
+val s = List(1,22,3,444,5)
+s.take(9)
+s.takeRight(9)
 
-val s = Set(55)
-s.incl(3)
+if (s.takeRight(9) == List()) 5
 
 
-def d(h: Int, acc: Set[Int] = Set(55)):Set[Int]={
-if (acc.size < h+1) d(h, acc.incl(Random.nextInt(54)))
-else acc.excl(55)
+s match {
+  case c1 :: c2 :: c3 :: c4 :: c5 :: Nil => c1.toString + ' ' +
+     c2.toString + ' ' + c3.toString + ' ' +
+    c4.toString + ' ' + c5.toString + " 34 4"
+  case _ => 0
 }
 
-d(5)
-
-
-
-
-
-
-
+"fd df df".split("\\s+").toList.head
