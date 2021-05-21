@@ -1,25 +1,5 @@
-import cats.data.{NonEmptyList, Validated}
-import cats.effect.{ExitCode, IO, _}
-import cats.implicits.toSemigroupKOps
+import GameData._
 import doobie.implicits._
-import doobie.implicits.legacy.localdate
-import doobie.{Fragment, Fragments, Meta, Transactor}
-import io.circe.generic.auto._
-import org.http4s.Method.POST
-import org.http4s.circe.CirceEntityCodec.{
-  circeEntityDecoder,
-  circeEntityEncoder
-}
-import org.http4s.dsl.io._
-import org.http4s.implicits.http4sKleisliResponseSyntaxOptionT
-import org.http4s.server.blaze.BlazeServerBuilder
-import org.http4s.{HttpRoutes, ParseFailure, QueryParamDecoder}
-
-import java.time.{LocalDate, Year}
-import java.util.UUID
-import scala.concurrent.ExecutionContext
-import doobie.implicits._
-import doobie.implicits.legacy.localdate
 import doobie.{Fragment, Fragments, Meta, Transactor}
 
 import java.util.UUID
@@ -53,11 +33,16 @@ object RequestInDB {
     fr" (id, startGame, idPlayer, bidForTable, numberOpenCard) VALUES"
 
   val addPlayer: Fragment = fr"INSERT INTO players" ++
-    fr" (playerID, tableID, name, money) VALUES"
+    fr" (playerID, tableID, name, money, playerCard, tableAndPlayerCard," ++
+    fr"cardForCombination, combination) VALUES"
 
   val tableIDForPlayer: Fragment = fr"SELECT tableID FROM players"
 
   val playersIDFromTable: Fragment = fr"SELECT idPlayer FROM tables"
+
+  val player: Fragment = fr"SELECT playerID, tableID," ++
+    fr" name, playerCard, tableAndPlayerCard," ++
+    fr" cardForCombination, combination  FROM players"
 
   def registrationInDB(
       id: UUID,
@@ -94,7 +79,8 @@ object RequestInDB {
       tableID: UUID,
       name: String
   ): doobie.ConnectionIO[Int] =
-    (addPlayer ++ fr" ($validPlayerID, $tableID, $name, $validMoney)").update.run
+    (addPlayer ++ fr" ($validPlayerID, $tableID, $name, $validMoney," ++
+      fr" 'player card', 'all card', 'combination card', 0)").update.run
 
   def playerSitsAtTable(
       validPlayerID: String,
@@ -119,7 +105,10 @@ object RequestInDB {
       twoCard: String,
       playerID: UUID
   ): doobie.ConnectionIO[Int] =
-    (fr"UPDATE players SET playerCard = $twoCard AND" ++
+    (fr"UPDATE players SET playerCard = $twoCard," ++
       fr" tableAndPlayerCard = $tablePlayerCard WHERE" ++
       fr" playerID = $playerID").update.run
+
+  def fetchPlayers: doobie.ConnectionIO[List[PlayerAtTable]] =
+    player.query[PlayerAtTable].to[List]
 }

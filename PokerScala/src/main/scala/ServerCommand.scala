@@ -3,6 +3,7 @@ import cats.effect.IO
 import cats.effect.concurrent.Ref
 import doobie.Transactor
 import doobie.implicits._
+import GameData._
 
 import java.util.UUID
 import RequestInDB._
@@ -69,8 +70,7 @@ object ServerSharedCommand {
               refTableID <- Ref.of[IO, UUID](UUID.randomUUID())
               _ <- tablesID.headOption match {
                 case Some(id) => {
-                  refTableID.set(id) *>
-                    ().pure[IO]
+                  refTableID.set(id).void
                 }
                 case _ => {
                   val id = UUID.randomUUID();
@@ -134,9 +134,8 @@ object ServerSharedCommand {
         stringListID.split("\\s+").toList,
         connectToDataBase
       )
-
-      response =
-        s"$cardTable , $allCardInHands , $stringListID" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
+      player <- fetchPlayers.transact(connectToDataBase)
+      response = s"$player" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
     } yield response
 
   def checkSharedRequestion(

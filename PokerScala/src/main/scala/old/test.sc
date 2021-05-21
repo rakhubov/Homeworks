@@ -1,15 +1,18 @@
-val s = List(1,22,3,444,5)
-s.take(9)
-s.takeRight(9)
-
-if (s.takeRight(9) == List()) 5
+import java.util.UUID
+import cats.effect.IO
+import io.chrisdavenport.fuuid.FUUID
 
 
-s match {
-  case c1 :: c2 :: c3 :: c4 :: c5 :: Nil => c1.toString + ' ' +
-     c2.toString + ' ' + c3.toString + ' ' +
-    c4.toString + ' ' + c5.toString + " 34 4"
-  case _ => 0
+val s =  List(1,2,3,4,5,6)
+
+List().headOption.getOrElse("")
+
+val uuid1 = FUUID.fromString("7cfb70a9-0764-4851-a28c-309393aea2eb")
+val g: UUID = uuid1 match {
+  case Right(value) => UUID.fromString(value.toString)
+  case _ => UUID.randomUUID()
 }
 
-"fd df df".split("\\s+").toList.head
+uuid1.getOrElse("")
+
+List().tail

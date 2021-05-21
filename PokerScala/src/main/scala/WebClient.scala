@@ -67,6 +67,13 @@ object WebSocketClient extends IOApp {
             }
             .compile
             .string >>= printLine
+        _ <-
+          client.receiveStream
+            .collectFirst {
+              case WSFrame.Text(s, _) => s
+            }
+            .compile
+            .string >>= printLine
 
       } yield ExitCode.Success
     }

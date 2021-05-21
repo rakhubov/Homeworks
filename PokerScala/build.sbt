@@ -27,6 +27,9 @@ libraryDependencies ++= Seq(
   "io.circe" %% "circe-generic-extras" % circeVersion,
   "io.circe" %% "circe-optics" % circeVersion,
   "io.circe" %% "circe-parser" % circeVersion,
+  "io.chrisdavenport" % "fuuid_2.13" % "0.5.0",
+//  "io.chrisdavenport" %% "fuuid-circe" % "0.5.0",
+//  "io.chrisdavenport" %% "fuuid-doobie" % "0.5.0",
   "org.tpolecat" %% "doobie-core" % doobieVersion,
   "org.tpolecat" %% "doobie-h2" % doobieVersion,
   "org.tpolecat" %% "doobie-hikari" % doobieVersion

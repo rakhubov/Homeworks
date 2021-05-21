@@ -1,6 +1,8 @@
 import RequestInDB._
 import cats.effect.IO
 import doobie.Transactor
+import doobie.implicits._
+import io.chrisdavenport.fuuid.FUUID
 
 import java.util.UUID
 import scala.util.Random
@@ -25,13 +27,11 @@ object CardManipulation {
       connectToDataBase: Transactor[IO]
   ): IO[Unit] =
     if (allCardInHands.size > 1) {
-
-      val playerID = Option(
-        UUID.fromString(playersID.head)
-      ) match {
-        case Some(value) => value
-        case _           => UUID.randomUUID()
-      }
+      val playerID =
+        FUUID.fromString(playersID.headOption.getOrElse("")) match {
+          case Right(value) => UUID.fromString(value.toString)
+          case _            => UUID.randomUUID()
+        }
       val oneCard = allCardInHands.head.toString()
       val twoCard = oneCard + ' ' + allCardInHands.tail.head.toString
       val stringTablePlayerCard = cardTable match {
@@ -41,20 +41,16 @@ object CardManipulation {
             c4.toString + ' ' + c5.toString + ' ' + twoCard
         case _ => ""
       }
-
       for {
-
         _ <- writeAllPlayerCard(stringTablePlayerCard, twoCard, playerID)
           .transact(connectToDataBase)
-
-      } yield IO(Unit)
-
-      writePlayerCard(
-        cardTable,
-        allCardInHands.takeRight(allCardInHands.size - 2),
-        playersID.tail,
-        connectToDataBase
-      )
-    }
+        _ <- writePlayerCard(
+          cardTable,
+          allCardInHands.takeRight(allCardInHands.size - 2),
+          playersID.tail,
+          connectToDataBase
+        )
+      } yield ()
+    } else IO.unit
 
 }
