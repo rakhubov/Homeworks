@@ -7,8 +7,10 @@ import GameData._
 
 import java.util.UUID
 import RequestInDB._
+import SearchWinner.searchWinner
 import cats.implicits.catsSyntaxApplicativeId
 import org.http4s.client.jdkhttpclient.WSFrame.Text
+
 object ServerPrivateCommand {
 
   def registrationForPlayer(
@@ -134,8 +136,11 @@ object ServerSharedCommand {
         stringListID.split("\\s+").toList,
         connectToDataBase
       )
-      player <- fetchPlayers.transact(connectToDataBase)
-      response = s"$player" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
+      listPlayers <- fetchPlayers(someTableID).transact(connectToDataBase)
+      _ <- searchWinner(listPlayers, connectToDataBase)
+
+      response =
+        s"start $listPlayers" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
     } yield response
 
   def checkSharedRequestion(
@@ -148,7 +153,7 @@ object ServerSharedCommand {
       case "start" :: id :: Nil =>
         startGame(id, connectToDataBase)
       case _ => IO("invalid request")
-
+//logger.info(s"consumed $n")//////////////////////////////////////////////////////
     }
   }
 }

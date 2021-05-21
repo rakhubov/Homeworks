@@ -109,6 +109,6 @@ object RequestInDB {
       fr" tableAndPlayerCard = $tablePlayerCard WHERE" ++
       fr" playerID = $playerID").update.run
 
-  def fetchPlayers: doobie.ConnectionIO[List[PlayerAtTable]] =
-    player.query[PlayerAtTable].to[List]
+  def fetchPlayers(tableID: UUID): doobie.ConnectionIO[List[PlayerDB]] =
+    (player ++ fr"WHERE tableID = $tableID").query[PlayerDB].to[List]
 }

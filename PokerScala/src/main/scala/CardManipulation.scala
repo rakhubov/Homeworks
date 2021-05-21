@@ -8,8 +8,8 @@ import java.util.UUID
 import scala.util.Random
 
 object CardManipulation {
-  val catalyst = 55
-  val cardInDeck = 54
+  val catalyst = 53
+  val cardInDeck = 52
 
   def generationCard(
       numberCard: Int,
