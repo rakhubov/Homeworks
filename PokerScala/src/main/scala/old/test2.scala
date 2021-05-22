@@ -18,6 +18,7 @@ import org.http4s.circe.CirceEntityCodec.{
 import cats.syntax.all._
 import fs2.{Pipe, Pull, Stream}
 import fs2.concurrent.{Queue, Topic}
+import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 import old.Author
 import org.graalvm.compiler.hotspot.replacements.HotSpotReplacementsUtil.config
 import org.http4s._
@@ -35,28 +36,26 @@ import java.util.UUID
 import scala.concurrent.ExecutionContext
 import scala.concurrent.duration.DurationInt
 
-//object test2 extends IOApp {
-//
-//  def onReceive(): Pipe[IO, WebSocketFrame, Unit] = { stream =>
-//    stream
-//      .parEvalMapUnordered(config.parallelMessageProcessingRate) {
-//        case Text(envelope, _) =>
-//          handleEnvelope(envelope)
-//        case Ping(data) =>
-//          multiplexer.pong(context, data)
-//        case Close(_) =>
-//          StructuredLogger[IO].info(s"Received close frame.")
-//        case unexpected =>
-//          StructuredLogger[IO].info(
-//            s"client sent unexpected WebSocket Frame: $unexpected"
-//          )
-//      }
-//      .handleErrorWith(e =>
-//        StructuredLogger[IO]
-//          .error(e)(
-//            s"Critical unresolvable internal error: ${e.getMessage}. Closing connection abruptly."
-//          )
-//          .eval
-//      )
-//  }
-//}
+object UpdateExample extends IOApp {
+
+  val logger = Slf4jLogger.getLogger[IO]
+
+  val counterRef: IO[Ref[IO, Int]] = Ref.of[IO, Int](0)
+
+  def inc(counterRef: Ref[IO, Int]): IO[Unit] =
+    for {
+      _ <- counterRef.update(_ + 1)
+      counter <- counterRef.get
+      _ <- logger.info(s"counter value is $counter")
+    } yield ()
+
+  val program: IO[Unit] = for {
+    counter <- Ref[IO].of(0)
+    _ <- List(inc(counter), inc(counter)).parSequence.void
+    v <- counter.get
+    _ <- logger.info(s"counter after updates $v")
+  } yield ()
+
+  override def run(args: List[String]): IO[ExitCode] =
+    program.as(ExitCode.Success)
+}

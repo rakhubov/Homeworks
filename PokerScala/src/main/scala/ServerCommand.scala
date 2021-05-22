@@ -8,6 +8,7 @@ import GameData._
 import java.util.UUID
 import RequestInDB._
 import SearchWinner.searchWinner
+import cats.Parallel
 import cats.implicits.catsSyntaxApplicativeId
 import org.http4s.client.jdkhttpclient.WSFrame.Text
 
@@ -33,7 +34,7 @@ object ServerPrivateCommand {
     }
   }
 
-  def checkPrivatRequestion(
+  def checkPrivatRequest(
       message: String,
       connectToDataBase: Transactor[IO]
   ): IO[String] = {
@@ -98,9 +99,9 @@ object ServerSharedCommand {
                 connectToDataBase
               )
               //all player
-              messageComplite =
+              messageComplete =
                 s"PlayerAtTable $nameString $tableID $validMoney"
-            } yield messageComplite
+            } yield messageComplete
           case _ => IO(s"error $message data not parsing")
         }
     }
@@ -109,7 +110,7 @@ object ServerSharedCommand {
   def startGame(
       playerID: String,
       connectToDataBase: Transactor[IO]
-  ): IO[String] =
+  )(implicit parallel: Parallel[IO]): IO[String] =
     for {
       tableID <-
         fetchTableByPlayerID(UUID.fromString(playerID)).option
@@ -143,10 +144,10 @@ object ServerSharedCommand {
         s"start $listPlayers" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
     } yield response
 
-  def checkSharedRequestion(
+  def checkSharedRequest(
       message: String,
       connectToDataBase: Transactor[IO]
-  ): IO[String] = {
+  )(implicit parallel: Parallel[IO]): IO[String] = {
     message.split("\\s+").toList match {
       case "game" :: next =>
         tableSearch(next, connectToDataBase)

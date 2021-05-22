@@ -1,4 +1,5 @@
 import Main.contextShift
+import cats.Parallel
 import cats.data.{NonEmptyList, Validated}
 import cats.effect.{ExitCode, IO, IOApp, _}
 import cats.implicits.toSemigroupKOps
@@ -34,13 +35,19 @@ object WebSocketServer {
 
   def run(
       connectToDataBase: Transactor[IO]
-  )(implicit concurent: ConcurrentEffect[IO], timer: Timer[IO]): IO[ExitCode] =
+  )(implicit
+      concurrent: ConcurrentEffect[IO],
+      timer: Timer[IO],
+      parallel: Parallel[IO]
+  ): IO[ExitCode] =
     for {
       chatTopic <- Topic[IO, String]("Hello!")
       _ <-
         BlazeServerBuilder[IO](ExecutionContext.global)
           .bindHttp(port = 8080, host = "localhost")
-          .withHttpApp(httpRoute(connectToDataBase, chatTopic, concurent, timer))
+          .withHttpApp(
+            httpRoute(connectToDataBase, chatTopic, concurrent, timer, parallel)
+          )
           .serve
           .compile
           .drain
@@ -49,26 +56,27 @@ object WebSocketServer {
   private def httpRoute(
       connectToDataBase: Transactor[IO],
       chatTopic: Topic[IO, String],
-      concurent: ConcurrentEffect[IO],
-      timer: Timer[IO]
+      concurrent: ConcurrentEffect[IO],
+      timer: Timer[IO],
+      parallel: Parallel[IO]
   ) = {
-    privateRoute(connectToDataBase)(concurent, timer) <+>
-      sharedRoute(connectToDataBase, chatTopic)
+    privateRoute(connectToDataBase)(concurrent, timer) <+>
+      sharedRoute(connectToDataBase, chatTopic)(parallel)
   }.orNotFound
   //
   //
 
   private def privateRoute(
       connectToDataBase: Transactor[IO]
-  )(implicit concurent: ConcurrentEffect[IO], timer: Timer[IO]) =
+  )(implicit concurrent: ConcurrentEffect[IO], timer: Timer[IO]) =
     HttpRoutes.of[IO] {
 
       case GET -> Root / "private" =>
-        import ServerPrivateCommand.checkPrivatRequestion
+        import ServerPrivateCommand.checkPrivatRequest
 
         val checkMessage: Pipe[IO, WebSocketFrame, WebSocketFrame] = _.evalMap {
           case WebSocketFrame.Text(message, _) =>
-            checkPrivatRequestion(message, connectToDataBase).map(response =>
+            checkPrivatRequest(message, connectToDataBase).map(response =>
               WebSocketFrame.Text(response)
             )
         }
@@ -88,17 +96,17 @@ object WebSocketServer {
   private def sharedRoute(
       connectToDataBase: Transactor[IO],
       chatTopic: Topic[IO, String]
-  ): HttpRoutes[IO] = {
+  )(implicit parallel: Parallel[IO]): HttpRoutes[IO] = {
     HttpRoutes.of[IO] {
 
       case GET -> Root / "chat" =>
-        import ServerSharedCommand.checkSharedRequestion
+        import ServerSharedCommand.checkSharedRequest
 
         WebSocketBuilder[IO].build(
           receive =
             chatTopic.publish.compose[Stream[IO, WebSocketFrame]](_.evalMap {
               case WebSocketFrame.Text(message, _) =>
-                checkSharedRequestion(message, connectToDataBase)
+                checkSharedRequest(message, connectToDataBase)
             }),
           send = chatTopic.subscribe(20).map(WebSocketFrame.Text(_))
         )

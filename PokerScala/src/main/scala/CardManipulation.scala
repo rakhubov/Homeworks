@@ -8,16 +8,16 @@ import java.util.UUID
 import scala.util.Random
 
 object CardManipulation {
-  val catalyst = 53
+  val numberNotEqualCard = 54
   val cardInDeck = 52
 
   def generationCard(
       numberCard: Int,
-      acc: Set[Int] = Set(catalyst)
+      acc: Set[Int] = Set(numberNotEqualCard)
   ): Set[Int] = {
     if (acc.size < numberCard + 1)
       generationCard(numberCard, acc.incl(Random.nextInt(cardInDeck)))
-    else acc.excl(catalyst)
+    else acc.excl(numberNotEqualCard)
   }
 
   def writePlayerCard(

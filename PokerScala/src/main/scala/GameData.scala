@@ -39,7 +39,7 @@ object GameData {
   final case class Player(
       playerID: UUID = UUID.randomUUID(),
       playerCard: List[Int] = List(),
-      tableAndPlayerCard: List[Int] = List(),
+      allCard: Vector[Int] = Vector(),
       cardForCombination: List[Int] = List(),
       combination: Int = 0
   )

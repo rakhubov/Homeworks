@@ -1,9 +1,9 @@
 import GameData._
+import CardManipulation.numberNotEqualCard
 
 object RefactorFunction {
 
   def PlayerFromPlayerDB(playerDB: PlayerDB): Player = {
-    val numberNotEqualCard = 53
     val playerCard: List[Int] =
       playerDB.playerCard
         .split("\\s+")
@@ -31,7 +31,11 @@ object RefactorFunction {
       case _ => List()
     }
     val player =
-      Player(playerDB.playerID, playerCard, tableAndPlayerCard)
+      Player(
+        playerDB.playerID,
+        playerCard,
+        tableAndPlayerCard.toVector.sorted.reverse //streetSort
+      )
     player match {
       case value => value
       case _     => Player()
