@@ -38,6 +38,7 @@ object GameData {
 
   final case class Player(
       playerID: UUID = UUID.randomUUID(),
+      name: String = "",
       playerCard: List[Int] = List(),
       allCard: Vector[Int] = Vector(),
       cardForCombination: List[Int] = List(),

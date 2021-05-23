@@ -111,4 +111,17 @@ object RequestInDB {
 
   def fetchPlayers(tableID: UUID): doobie.ConnectionIO[List[PlayerDB]] =
     (player ++ fr"WHERE tableID = $tableID").query[PlayerDB].to[List]
+
+  def writeGameCombination(
+      playerID: UUID,
+      combinationCard: String,
+      combination: Int
+  ): doobie.ConnectionIO[Int] =
+    (fr"UPDATE players SET cardForCombination = $combinationCard," ++
+      fr" combination = $combination WHERE" ++
+      fr" playerID = $playerID").update.run
+
+  def fetchPlayerCardByID(id: UUID): doobie.Query0[String] =
+    (fr"SELECT playerCard FROM players WHERE  playerID = $id")
+      .query[String]
 }

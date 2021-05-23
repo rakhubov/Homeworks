@@ -4,12 +4,14 @@ import cats.effect.concurrent.Ref
 import doobie.Transactor
 import doobie.implicits._
 import GameData._
+import RefactorFunction.PlayerFromPlayerDB
 
 import java.util.UUID
 import RequestInDB._
-import SearchWinner.searchWinner
+import SearchWinner._
 import cats.Parallel
 import cats.implicits.catsSyntaxApplicativeId
+import io.chrisdavenport.fuuid.FUUID
 import org.http4s.client.jdkhttpclient.WSFrame.Text
 
 object ServerPrivateCommand {
@@ -34,6 +36,30 @@ object ServerPrivateCommand {
     }
   }
 
+  def fetchPlayerCards(
+      id: String,
+      connectToDataBase: Transactor[IO]
+  ): IO[String] = {
+    val validID = FUUID.fromString(id) match {
+      case Right(value) => UUID.fromString(value.toString)
+      case _            => UUID.randomUUID()
+    }
+    for {
+      playerCard <-
+        fetchPlayerCardByID(validID).option.transact(connectToDataBase)
+      mapPlayerCard = playerCard.getOrElse("").split("\\s+").toList match {
+        case card1 :: card2 :: Nil
+            if (card1.toIntOption
+              .getOrElse(numberNotEqualCard) != numberNotEqualCard
+              && card2.toIntOption
+                .getOrElse(numberNotEqualCard) != numberNotEqualCard) =>
+          "You card:  " + cardIntToString(card1.toInt) +
+            ", " + cardIntToString(card2.toInt)
+        case _ => s"error fetchCard $id"
+      }
+    } yield mapPlayerCard
+  }
+
   def checkPrivatRequest(
       message: String,
       connectToDataBase: Transactor[IO]
@@ -41,7 +67,8 @@ object ServerPrivateCommand {
     message.split("\\s+").toList match {
       case "registration" :: next =>
         registrationForPlayer(next, connectToDataBase)
-      case _ => IO(s"error $message invalid private request")
+      case "MyCard" :: id :: Nil => fetchPlayerCards(id, connectToDataBase)
+      case _                     => IO(s"error $message invalid private request")
     }
   }
 }
@@ -138,11 +165,32 @@ object ServerSharedCommand {
         connectToDataBase
       )
       listPlayers <- fetchPlayers(someTableID).transact(connectToDataBase)
-      _ <- searchWinner(listPlayers, connectToDataBase)
+      _ <- searchCombination(listPlayers, connectToDataBase)
 
       response =
         s"start $listPlayers" //= s"start ${tableID.getOrElse(UUID.randomUUID())}"
     } yield response
+
+  def fetchWinner(id: String, connectToDataBase: Transactor[IO]): IO[String] = {
+    val validID = FUUID.fromString(id) match {
+      case Right(value) => UUID.fromString(value.toString)
+      case _            => UUID.randomUUID()
+    }
+    for {
+      tableID <-
+        fetchTableByPlayerID(validID).option
+          .transact(
+            connectToDataBase
+          )
+      someTableID = tableID.getOrElse(UUID.randomUUID())
+      listPlayersDB <- fetchPlayers(someTableID).transact(connectToDataBase)
+      listPlayer = listPlayersDB.map(player => PlayerFromPlayerDB(player))
+      winner = searchWinner(listPlayer)
+
+      map = s"$winner"
+    } yield map
+
+  }
 
   def checkSharedRequest(
       message: String,
@@ -153,6 +201,8 @@ object ServerSharedCommand {
         tableSearch(next, connectToDataBase)
       case "start" :: id :: Nil =>
         startGame(id, connectToDataBase)
+      case "fetchWinner" :: id :: Nil =>
+        fetchWinner(id, connectToDataBase)
       case _ => IO("invalid request")
 //logger.info(s"consumed $n")//////////////////////////////////////////////////////
     }

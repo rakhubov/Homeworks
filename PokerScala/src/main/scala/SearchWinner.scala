@@ -1,7 +1,7 @@
 import GameData._
 import RefactorFunction._
 import CardManipulation.numberNotEqualCard
-import RequestInDB.{playerSitsAtTable, writeAllPlayerCard}
+import RequestInDB.{playerSitsAtTable, writeAllPlayerCard, writeGameCombination}
 
 import java.time.Instant
 import java.util.concurrent.Executors
@@ -9,6 +9,7 @@ import java.util.concurrent.atomic.AtomicReference
 import cats.effect.concurrent._
 import cats.effect.{Concurrent, ExitCode, IO, IOApp}
 import doobie.Transactor
+import doobie.implicits._
 import io.chrisdavenport.fuuid.FUUID
 import io.chrisdavenport.log4cats.slf4j.Slf4jLogger
 import CheckCombination._
@@ -23,7 +24,7 @@ import java.util.UUID
 
 object SearchWinner {
 
-  def searchWinner(
+  def searchCombination(
       listPlayers: List[PlayerDB],
       connectToDataBase: Transactor[IO]
   )(implicit parallel: Parallel[IO]): IO[ExitCode] =
@@ -49,12 +50,32 @@ object SearchWinner {
             oneOrTwoPairRef(playerRef),
             highCardRef(playerRef)
           ).parSequence.void
-          f <- playerRef.get
-          _ = println(f)
-//        _ <- writeAllPlayerCard(stringTablePlayerCard, twoCard, playerID)
-//          .transact(connectToDataBase)
-          _ <- searchWinner(listPlayers.tail, connectToDataBase)
+          player <- playerRef.get
+          stringCombinationCard = listToString(player.cardForCombination)
+          _ = println(player)
+          _ <- writeGameCombination(
+            player.playerID,
+            stringCombinationCard,
+            player.combination
+          ).transact(connectToDataBase)
+          _ <- searchCombination(listPlayers.tail, connectToDataBase)
         } yield (ExitCode.Success)
       } else IO(ExitCode.Success)
     } else IO(ExitCode.Success)
+
+  def searchWinner(listPlayer: List[Player]) = {
+    listPlayer
+      .sortBy(player =>
+        (
+          player.combination,
+          player.cardForCombination.lift(0).getOrElse(-1),
+          player.cardForCombination.lift(1).getOrElse(-1),
+          player.cardForCombination.lift(2).getOrElse(-1),
+          player.cardForCombination.lift(3).getOrElse(-1),
+          player.cardForCombination.lift(4).getOrElse(-1)
+        )
+      )
+      .reverse
+  }
+
 }

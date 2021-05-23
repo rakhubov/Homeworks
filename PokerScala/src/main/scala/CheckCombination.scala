@@ -12,7 +12,7 @@ object CheckCombination {
 
   def streetFlush(player: Player, counter: Int): Player = {
     val cardFlashSort: Vector[Int] =
-      player.allCard.sortBy(x => (x % 4, x / 4)).reverse
+      player.allCard.sortBy(cardID => (cardID % 4, cardID / 4)).reverse
     val card1 = cardFlashSort.lift(counter).getOrElse(numberNotEqualCard)
     val card2 = cardFlashSort.lift(counter + 1).getOrElse(numberNotEqualCard)
     val card3 = cardFlashSort.lift(counter + 2).getOrElse(numberNotEqualCard)
@@ -132,7 +132,7 @@ object CheckCombination {
   def street(player: Player): Player = {
     if (player.combination < 5) {
       val cardWithoutSuit =
-        player.allCard.map(card => card % 13).distinct.sorted.reverse
+        player.allCard.map(card => card / 4).distinct.sorted.reverse
       val card1 = cardWithoutSuit.lift(0).getOrElse(numberNotEqualCard)
       val card2 = cardWithoutSuit.lift(1).getOrElse(numberNotEqualCard)
       val card3 = cardWithoutSuit.lift(2).getOrElse(numberNotEqualCard)
@@ -156,7 +156,8 @@ object CheckCombination {
         else numberNotEqualCard
       if (card != numberNotEqualCard) {
         player.copy(
-          cardForCombination = List(card, card, card, card, card),
+          cardForCombination =
+            List(card * 4, card * 4, card * 4, card * 4, card * 4),
           combination = 5
         )
       } else player
@@ -183,7 +184,7 @@ object CheckCombination {
           val card2 = kickerCard.lift(1).getOrElse(numberNotEqualCard)
           player.copy(
             cardForCombination =
-              List(card * 4, card * 4, card * 4, card1 * 4, card2 * 4),
+              List(card * 4, card * 4, card * 4, card1, card2),
             combination = 4
           )
         }
