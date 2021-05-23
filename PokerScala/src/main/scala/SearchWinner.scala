@@ -41,11 +41,13 @@ object SearchWinner {
           playerRef <- playerRefIO
           _ <- List(
             streetFlushRef(playerRef),
-            highCardRef(playerRef),
             fourCardsRef(playerRef),
             fullHouseRef(playerRef),
             flushRef(playerRef),
-            streetRef(playerRef)
+            streetRef(playerRef),
+            setRef(playerRef),
+            oneOrTwoPairRef(playerRef),
+            highCardRef(playerRef)
           ).parSequence.void
           f <- playerRef.get
           _ = println(f)

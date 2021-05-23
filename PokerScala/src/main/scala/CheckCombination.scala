@@ -32,26 +32,6 @@ object CheckCombination {
     else player
   }
 
-  def highCardRef(playerRef: Ref[IO, Player]): IO[Unit] = {
-    playerRef
-      .modify(player => ((highCard(player)), player))
-      .flatMap(message => logger.info("highCardRef " ++ message.toString))
-  }
-
-  def highCard(player: Player): Player = {
-    if (player.combination == 0) {
-      val card1 = player.allCard.lift(0).getOrElse(numberNotEqualCard)
-      val card2 = player.allCard.lift(1).getOrElse(numberNotEqualCard)
-      val card3 = player.allCard.lift(2).getOrElse(numberNotEqualCard)
-      val card4 = player.allCard.lift(3).getOrElse(numberNotEqualCard)
-      val card5 = player.allCard.lift(4).getOrElse(numberNotEqualCard)
-      player.copy(
-        cardForCombination = List(card1, card2, card3, card4, card5),
-        combination = 1
-      )
-    } else player
-  }
-
   def fourCardsRef(playerRef: Ref[IO, Player]): IO[Unit] = {
     playerRef
       .modify(player => (fourCards(player, 0), player))
@@ -146,7 +126,7 @@ object CheckCombination {
   def streetRef(playerRef: Ref[IO, Player]): IO[Unit] = {
     playerRef
       .modify(player => (street(player), player))
-      .flatMap(message => logger.info("flushRef " ++ message.toString))
+      .flatMap(message => logger.info("street " ++ message.toString))
   }
 
   def street(player: Player): Player = {
@@ -180,6 +160,109 @@ object CheckCombination {
           combination = 5
         )
       } else player
+    } else player
+  }
+
+  def setRef(playerRef: Ref[IO, Player]): IO[Unit] = {
+    playerRef
+      .modify(player => ((set(player)), player))
+      .flatMap(message => logger.info("setRef " ++ message.toString))
+  }
+
+  def set(player: Player): Player = {
+    if (player.combination < 4) {
+      val cards = player.allCard.map(card => card / 4)
+      searchEqualCard(cards, 3) match {
+        case `numberNotEqualCard` => player
+        case card => {
+          val kickerCard = player.allCard
+            .filter(_ / 4 != card)
+            .sorted
+            .reverse
+          val card1 = kickerCard.lift(0).getOrElse(numberNotEqualCard)
+          val card2 = kickerCard.lift(1).getOrElse(numberNotEqualCard)
+          player.copy(
+            cardForCombination =
+              List(card * 4, card * 4, card * 4, card1 * 4, card2 * 4),
+            combination = 4
+          )
+        }
+      }
+    } else player
+  }
+
+  def oneOrTwoPairRef(playerRef: Ref[IO, Player]): IO[Unit] = {
+    playerRef
+      .modify(player => ((oneOrTwoPair(player)), player))
+      .flatMap(message => logger.info("oneOrTwoPairRef " ++ message.toString))
+  }
+
+  def oneOrTwoPair(player: Player): Player = {
+    if (player.combination < 3) {
+      val cards = player.allCard.map(card => card / 4)
+      searchEqualCard(cards, 2) match {
+        case `numberNotEqualCard` => player
+        case card => {
+          val cardForTwoPair = cards
+            .filter(_ != card)
+            .sorted
+            .reverse
+          if (cardForTwoPair.size == 5) {
+            searchEqualCard(cardForTwoPair, 2) match {
+              //one Pair
+              case `numberNotEqualCard` => {
+                val card1 = cardForTwoPair.lift(0).getOrElse(numberNotEqualCard)
+                val card2 = cardForTwoPair.lift(1).getOrElse(numberNotEqualCard)
+                val card3 = cardForTwoPair.lift(2).getOrElse(numberNotEqualCard)
+                player.copy(
+                  cardForCombination =
+                    List(card * 4, card * 4, card1 * 4, card2 * 4, card3 * 4),
+                  combination = 2
+                )
+              }
+              //two pair
+              case card2 => {
+                val kickerCard = cardForTwoPair
+                  .filter(_ != card2)
+                  .sorted
+                  .reverse
+                  .headOption
+                  .getOrElse(numberNotEqualCard)
+                player.copy(
+                  cardForCombination = List(
+                    card * 4,
+                    card * 4,
+                    card2 * 4,
+                    card2 * 4,
+                    kickerCard * 4
+                  ),
+                  combination = 3
+                )
+              }
+            }
+          } else player
+        }
+      }
+    } else player
+  }
+
+  def highCardRef(playerRef: Ref[IO, Player]): IO[Unit] = {
+    playerRef
+      .modify(player => ((highCard(player)), player))
+      .flatMap(message => logger.info("highCardRef " ++ message.toString))
+  }
+
+  def highCard(player: Player): Player = {
+    if (player.combination == 0) {
+      val card1 = player.allCard.lift(0).getOrElse(numberNotEqualCard)
+      val card2 = player.allCard.lift(1).getOrElse(numberNotEqualCard)
+      val card3 = player.allCard.lift(2).getOrElse(numberNotEqualCard)
+      val card4 = player.allCard.lift(3).getOrElse(numberNotEqualCard)
+      val card5 = player.allCard.lift(4).getOrElse(numberNotEqualCard)
+      player.copy(
+        cardForCombination = List(card1, card2, card3, card4, card5),
+        combination = 1
+      )
     } else player
   }
 
