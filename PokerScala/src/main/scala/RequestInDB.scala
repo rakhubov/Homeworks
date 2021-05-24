@@ -1,6 +1,7 @@
 import GameData._
 import doobie.implicits._
 import doobie.{Fragment, Fragments, Meta, Transactor}
+import io.chrisdavenport.fuuid.FUUID
 
 import java.util.UUID
 
@@ -123,5 +124,9 @@ object RequestInDB {
 
   def fetchPlayerCardByID(id: UUID): doobie.Query0[String] =
     (fr"SELECT playerCard FROM players WHERE  playerID = $id")
+      .query[String]
+
+  def fetchTableCardByID(id: UUID): doobie.Query0[String] =
+    (fr"SELECT tableAndPlayerCard FROM players WHERE  playerID = $id")
       .query[String]
 }

@@ -10,9 +10,10 @@ val s0:List[Int] = List()
 val s1:List[Int] = List(1)
 val s4 = List(1,2,3,4)
 Set(0) ++ s
-s.zip(s.tail)
-"dsdsd" ++ "sddddd" + " "  + "dddd"
 
-"".trim
-if("4".toIntOption.getOrElse(54) != 54)5
-"4".toIntOption.getOrElse(54)
+1 match {
+  case 2 =>
+  case d => ()
+}
+s.find(f => f == 4)
+Player()
