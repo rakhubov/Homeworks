@@ -1,5 +1,9 @@
-import GameData._
-import CardManipulation.numberNotEqualCard
+package gameData
+
+import gameData.CardManipulation.numberNotEqualCard
+import gameData.GameData.{Player, PlayerDB}
+
+import scala.annotation.tailrec
 
 object RefactorFunction {
 
@@ -58,11 +62,26 @@ object RefactorFunction {
     }
   }
 
-  def listToString[F](vector: List[F]): String =
-    vector.map(_.toString) match {
-      case c1 :: c2 :: c3 :: c4 :: c5 :: Nil =>
-        c1 + ' ' + c2 + ' ' + c3 + ' ' + c4 + ' ' + c5
-      case _ => ""
-    }
+  @tailrec
+  def listToString[F](list: List[F], acc: String = ""): String = {
+    if (list.nonEmpty) {
+      listToString(
+        list.drop(1),
+        acc + list.headOption.getOrElse(numberNotEqualCard).toString + " "
+      )
+    } else acc.trim
+  }
+
+  @tailrec
+  def listToName[F](list: List[F], acc: String = ""): String = {
+    if (list.size > 1) {
+      listToName(
+        list.drop(1),
+        acc + list.headOption.getOrElse(numberNotEqualCard).toString + ",\n"
+      )
+    } else if (list.size == 1)
+      acc + list.headOption.getOrElse(numberNotEqualCard).toString
+    else acc
+  }
 
 }

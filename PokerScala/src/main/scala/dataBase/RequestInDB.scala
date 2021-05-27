@@ -1,7 +1,8 @@
-import GameData._
+package dataBase
+
 import doobie.implicits._
-import doobie.{Fragment, Fragments, Meta, Transactor}
-import io.chrisdavenport.fuuid.FUUID
+import doobie.{Fragment, Meta}
+import gameData.GameData.PlayerDB
 
 import java.util.UUID
 
@@ -46,9 +47,9 @@ object RequestInDB {
     fr" cardForCombination, combination  FROM players"
 
   def registrationInDB(
-      id: UUID,
-      name: String,
-      moneyPersonalAccount: Int
+    id: UUID,
+    name: String,
+    moneyPersonalAccount: Int
   ): doobie.ConnectionIO[Int] = {
     (addRegistration ++ fr" ($id, $name, $moneyPersonalAccount)").update.run
   }
@@ -75,17 +76,17 @@ object RequestInDB {
     (playerName ++ fr"WHERE id = $validPlayerID").query[String]
 
   def createPlayer(
-      validPlayerID: UUID,
-      validMoney: Int,
-      tableID: UUID,
-      name: String
+    validPlayerID: UUID,
+    validMoney: Int,
+    tableID: UUID,
+    name: String
   ): doobie.ConnectionIO[Int] =
     (addPlayer ++ fr" ($validPlayerID, $tableID, $name, $validMoney," ++
       fr" 'player card', 'all card', 'combination card', 0)").update.run
 
   def playerSitsAtTable(
-      validPlayerID: String,
-      tableID: UUID
+    validPlayerID: String,
+    tableID: UUID
   ): doobie.ConnectionIO[Int] =
     (fr"UPDATE tables SET idPlayer = CASE WHEN" ++
       fr" idPlayer IS NULL THEN $validPlayerID ELSE" ++
@@ -102,9 +103,9 @@ object RequestInDB {
     registrationID.query[UUID]
 
   def writeAllPlayerCard(
-      tablePlayerCard: String,
-      twoCard: String,
-      playerID: UUID
+    tablePlayerCard: String,
+    twoCard: String,
+    playerID: UUID
   ): doobie.ConnectionIO[Int] =
     (fr"UPDATE players SET playerCard = $twoCard," ++
       fr" tableAndPlayerCard = $tablePlayerCard WHERE" ++
@@ -114,19 +115,19 @@ object RequestInDB {
     (player ++ fr"WHERE tableID = $tableID").query[PlayerDB].to[List]
 
   def writeGameCombination(
-      playerID: UUID,
-      combinationCard: String,
-      combination: Int
+    playerID: UUID,
+    combinationCard: String,
+    combination: Int
   ): doobie.ConnectionIO[Int] =
     (fr"UPDATE players SET cardForCombination = $combinationCard," ++
       fr" combination = $combination WHERE" ++
       fr" playerID = $playerID").update.run
 
   def fetchPlayerCardByID(id: UUID): doobie.Query0[String] =
-    (fr"SELECT playerCard FROM players WHERE  playerID = $id")
+    fr"SELECT playerCard FROM players WHERE  playerID = $id"
       .query[String]
 
   def fetchTableCardByID(id: UUID): doobie.Query0[String] =
-    (fr"SELECT tableAndPlayerCard FROM players WHERE  playerID = $id")
+    fr"SELECT tableAndPlayerCard FROM players WHERE  playerID = $id"
       .query[String]
 }
