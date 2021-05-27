@@ -1,0 +1,142 @@
+[debug] > Exec(early(addDefaultCommands), None, None)
+[debug] > Exec(addDefaultCommands, None, None)
+[debug] > Exec(early(initialize), None, None)
+[debug] > Exec(initialize, None, None)
+[debug] > Exec(early(addPluginSbtFile="""C:\Users\rakhub\AppData\Local\Temp\idea.sbt"""), None, None)
+[debug] > Exec(addPluginSbtFile="""C:\Users\rakhub\AppData\Local\Temp\idea.sbt""", None, None)
+[debug] > Exec(boot, None, None)
+[debug] > Exec(writeSbtVersion, None, None)
+[debug] > Exec(reload, None, None)
+[debug] > Exec(sbtStashOnFailure, None, None)
+[debug] > Exec(onFailure loadFailed, None, None)
+[debug] > Exec(loadp, None, None)
+[info] welcome to sbt 1.5.1 (AdoptOpenJDK Java 11.0.10)
+[debug]       Load.loadUnit: plugins took 174.1982ms
+[debug]       Load.loadUnit: defsScala took 0.4372ms
+[debug] [Loading] Scanning directory C:\Users\rakhub\.sbt\1.0\plugins
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\rakhub\.sbt\1.0\plugins, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 30.579999 ms
+[debug]           Load.resolveProject(global-plugins) took 72.689ms
+[debug]         Load.loadTransitive: finalizeProject(Project(id global-plugins, base: C:\Users\rakhub\.sbt\1.0\plugins, plugins: List(<none>))) took 145.604301ms
+[debug] [Loading] Done in C:\Users\rakhub\.sbt\1.0\plugins, returning: (global-plugins)
+[debug]       Load.loadUnit: loadedProjectsRaw took 178.1599ms
+[debug]       Load.loadUnit: cleanEvalClasses took 0.277899ms
+[debug]     Load.loadUnit(file:/C:/Users/rakhub/.sbt/1.0/plugins/, ...) took 406.8318ms
+[debug]   Load.apply: load took 752.8195ms
+[debug]   Load.apply: resolveProjects took 6.3461ms
+[debug]   Load.apply: finalTransforms took 68.213599ms
+[debug]   Load.apply: config.delegates took 11.748801ms
+[debug]   Load.apply: Def.make(settings)... took 821.457001ms
+[debug]   Load.apply: structureIndex took 130.590899ms
+[debug]   Load.apply: mkStreams took 1.6633ms
+[info] loading global plugins from C:\Users\rakhub\.sbt\1.0\plugins
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug] Load.defaultLoad until apply took 4140.6893ms
+[debug]           Load.loadUnit: plugins took 39.495899ms
+[debug]           Load.loadUnit: defsScala took 0.004299ms
+[debug] [Loading] Scanning directory C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer\project
+[debug]             Load.loadUnit: mkEval took 9.7809ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer\project, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.MiniDependencyTreePlugin,sbt.plugins.JUnitXmlReportPlugin,sbt.plugins.SemanticdbPlugin)
+[debug] Plugins.deducer#function took 2.306899 ms
+[info] loading settings for project pokerscalaserver-build from idea.sbt ...
+[debug]               Load.resolveProject(pokerscalaserver-build) took 4.0054ms
+[debug]             Load.loadTransitive: finalizeProject(Project(id pokerscalaserver-build, base: C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer\project, plugins: List(<none>))) took 7.055101ms
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer\project, returning: (pokerscalaserver-build)
+[debug]           Load.loadUnit: loadedProjectsRaw took 3049.637199ms
+[debug]           Load.loadUnit: cleanEvalClasses took 7.163601ms
+[debug]         Load.loadUnit(file:/C:/Users/rakhub/Downloads/PokerScalaServer/PokerScalaServer/project/, ...) took 3097.570301ms
+[debug]       Load.apply: load took 3099.525899ms
+[debug]       Load.apply: resolveProjects took 0.1583ms
+[debug]       Load.apply: finalTransforms took 11.1747ms
+[debug]       Load.apply: config.delegates took 0.4668ms
+[debug]       Load.apply: Def.make(settings)... took 114.5004ms
+[debug]       Load.apply: structureIndex took 33.084001ms
+[debug]       Load.apply: mkStreams took 0.003ms
+[info] loading project definition from C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer\project
+[debug] Running task... Cancel: Signal, check cycles: false, forcegc: true
+[debug]     Load.loadUnit: plugins took 5745.537301ms
+[debug]     Load.loadUnit: defsScala took 0.0046ms
+[debug] [Loading] Scanning directory C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer
+[debug]       Load.loadUnit: mkEval took 0.3918ms
+[debug] [Loading] Found non-root projects 
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer, returning: ()
+[debug] deducing auto plugins based on known facts Set(Atom(sbt.plugins.CorePlugin)) and clauses Clauses(Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.ScriptedPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.SbtPlugin),Set(Atom(sbt.ScriptedPlugin)))
+[debug] Clause(Atom(sbt.plugins.SemanticdbPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JUnitXmlReportPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.MiniDependencyTreePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.StructurePlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.IdeaShellPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.IvyPlugin)))
+[debug] Clause(Atom(sbt.plugins.IvyPlugin),Set(Atom(sbt.plugins.JvmPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.SemanticdbPlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.JUnitXmlReportPlugin)))
+[debug] Clause(Atom(sbt.plugins.CorePlugin),Set(Atom(sbt.plugins.Giter8TemplatePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(sbt.plugins.MiniDependencyTreePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.StructurePlugin)))
+[debug] Clause(Atom(sbt.plugins.JvmPlugin),Set(Atom(org.jetbrains.sbt.IdeaShellPlugin)))
+[debug] Clause(And(Set(Atom(sbt.plugins.CorePlugin), Atom(sbt.plugins.JvmPlugin))),Set(Atom(org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin))))
+[debug]   :: deduced result: Matched(sbt.plugins.CorePlugin,sbt.plugins.Giter8TemplatePlugin,sbt.plugins.IvyPlugin,sbt.plugins.JvmPlugin,sbt.plugins.SemanticdbPlugin,org.jetbrains.sbt.indices.SbtIntellijIndicesPlugin,sbt.plugins.JUnitXmlReportPlugin,org.jetbrains.sbt.IdeaShellPlugin,org.jetbrains.sbt.StructurePlugin,sbt.plugins.MiniDependencyTreePlugin)
+[debug] Plugins.deducer#function took 2.658 ms
+[info] loading settings for project pokerscalaserver from build.sbt ...
+[debug]         Load.resolveProject(pokerscalaserver) took 39.339901ms
+[debug]       Load.loadTransitive: finalizeProject(Project(id pokerscalaserver, base: C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer, plugins: List(<none>))) took 43.6568ms
+[debug] [Loading] Done in C:\Users\rakhub\Downloads\PokerScalaServer\PokerScalaServer, returning: (pokerscalaserver)
+[debug]     Load.loadUnit: loadedProjectsRaw took 1756.078101ms
+[debug]     Load.loadUnit: cleanEvalClasses took 22.8051ms
+[debug]   Load.loadUnit(file:/C:/Users/rakhub/Downloads/PokerScalaServer/PokerScalaServer/, ...) took 7525.2242ms
+[debug] Load.apply: load took 7527.4433ms
+[debug] Load.apply: resolveProjects took 0.1323ms
+[debug] Load.apply: finalTransforms took 35.695601ms
+[debug] Load.apply: config.delegates took 0.348399ms
+[debug] Load.apply: Def.make(settings)... took 108.796699ms
+[debug] Load.apply: structureIndex took 29.1456ms
+[debug] Load.apply: mkStreams took 0.003301ms
+[info] set current project to Poker (in build file:/C:/Users/rakhub/Downloads/PokerScalaServer/PokerScalaServer/)
+[debug] > Exec(sbtPopOnFailure, None, None)
+[debug] > Exec(resumeFromFailure, None, None)
+[debug] > Exec(notifyUsersAboutShell, None, None)
+[debug] > Exec(iflast shell, None, None)
+[debug] > Exec(; set ideaPort in Global := 54397 ; idea-shell, None, None)
+[debug] > Exec(set ideaPort in Global := 54397, None, None)
+[info] Defining Global / ideaPort
+[info] The new value will be used by Compile / compile, Test / compile
+[debug] Defining 
+[debug] 	Global / ideaPort
+[debug] 
+[debug] The new value will be used by 
+[debug] 	Compile / compile
+[debug] 	Test / compile
+[info] Reapplying settings...
+[info] set current project to Poker (in build file:/C:/Users/rakhub/Downloads/PokerScalaServer/PokerScalaServer/)
+[debug] > Exec(idea-shell, None, None)
